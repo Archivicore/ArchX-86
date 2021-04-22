@@ -1,5 +1,5 @@
 # We're using Ubuntu 20.10
-FROM archivicore/archx-beta:groovy
+FROM alfianandaa/alf:groovy
 
 #
 # Clone repo and prepare working directory
