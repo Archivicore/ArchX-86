@@ -52,7 +52,7 @@ else:
     dbstats = "Not Fine ❌"
 
 inlinestats = (
-    f"✘ SHOWING FRIDAYUBOT STATS ✘\n"
+    f"✘ ARCHXBOT-86 STATS ✘\n"
     f"VERSION = {currentversion} \n"
     f"DATABASE = {dbstats} \n"
     f"SUDO = {amiusingsudo} \n"
