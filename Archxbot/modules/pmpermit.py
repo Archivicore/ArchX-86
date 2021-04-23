@@ -1,6 +1,7 @@
 import asyncio
 import io
 import os
+import html
 
 from telethon import events, functions
 from telethon.tl.functions.users import GetFullUserRequest
@@ -39,7 +40,7 @@ else:
 botisnoob = Var.TG_BOT_USER_NAME_BF_HER
 devs_id = [1013739830, 613690726]
 USER_BOT_NO_WARN = (
-    f"**Hei {first_name}, Ini adalah Layanan Perlindungan dari** `ArchxSecurity`\n\n"
+    f"**Hei {firstname}, Ini adalah Layanan Perlindungan dari** `ArchxSecurity`\n\n"
     f"`Saya {DEFAULTUSER} Sedang Sibuk Sekarang!`\n"
     f"**{CUSTOM_MIDDLE_PMP}**"
     f"**Silahkan {first_name} Untuk Memilih Alasan PM dibawah ini**\n\n"
@@ -116,7 +117,7 @@ if PM_ON_OFF != "DISABLE":
                 )
                 await borg.send_message(
                     LOG_CHAT,
-                    message=f"**TRANSAKSI**\n{DEFAULT_USER} `Memulai Transaksi Dengan :` [{first_name}](tg://user?id={him_id})",
+                    message=f"**TRANSAKSI**\n{DEFAULT_USER} `Memulai Transaksi Dengan :` [{first_name}](tg://user?id={sender_id})",
                 )
                 await asyncio.sleep(3)
                 await event.delete()
