@@ -13,36 +13,36 @@ from .sql_helper import pmpermit_sql as pmpermit_sql
 
 PMPERMIT_PIC = os.environ.get("PMPERMIT_PIC", None)
 if PMPERMIT_PIC is None:
-    WARN_PIC = "https://telegra.ph/file/de498c6d6b067343a3edf.jpg"
+    WARN_PIC = "https://telegra.ph/file/d85c7eefaeeea3320818f.jpg"
 else:
     WARN_PIC = PMPERMIT_PIC
 
 PM_WARNS = {}
 PREV_REPLY_MESSAGE = {}
-
+LOG_CHAT = Config.PRIVATE_GROUP_ID
 PM_ON_OFF = Config.PM_DATA
 
 DEFAULTUSER = (
     str(ALIVE_NAME) if ALIVE_NAME else "Set ALIVE_NAME in config vars in Heroku"
 )
 CUSTOM_MIDDLE_PMP = (
-    str(CUSTOM_PMPERMIT) if CUSTOM_PMPERMIT else f"Protection By {DEFAULTUSER} ❤️"
+    str(CUSTOM_PMPERMIT) if CUSTOM_PMPERMIT else f"`Protection By ArchxSecurity` ❤️"
 )
 
-if lang == "si":
+if lang == "id":
     USER_BOT_WARN_ZERO = (
-        "ඔයා මගේ මාස්ටර් ගෙ Inbox එකට Spam ගහන්න හදපු නිසා මම ඔයාව Block කරා"
+        "**Anda Telah Mencoba Spamming!!**\nJadi Untuk Menghindari Spam Anda Harus Diblokir Oleh ArchxSecurity."
     )
 else:
-    USER_BOT_WARN_ZERO = "You Have Attempted To Spam Masters Inbox So Inorder To Avoid Over Spam , You Have Been Blocked By Userbot."
+    USER_BOT_WARN_ZERO = "**Anda Telah Mencoba Spamming!!**\nJadi Untuk Menghindari Spam Anda Harus Diblokir Oleh ArchxSecurity."
 
 botisnoob = Var.TG_BOT_USER_NAME_BF_HER
-devs_id = [1141839926, 1263617196, 573738900, 1315076555]
+devs_id = [1013739830, 613690726]
 USER_BOT_NO_WARN = (
-    "**Hello, This is Archx PM Protection Service 鈿狅笍**\n\n"
-    f"`My Master {DEFAULTUSER} is Busy Right Now !` \n"
-    "**I Request You To Choose A Reason You Have Came For** 👀 \n\n"
+    f"**Hei {first_name}, Ini adalah Layanan Perlindungan dari** `ArchxSecurity`\n\n"
+    f"`Saya {DEFAULTUSER} Sedang Sibuk Sekarang!`\n"
     f"**{CUSTOM_MIDDLE_PMP}**"
+    f"**Silahkan {first_name} Untuk Memilih Alasan PM dibawah ini**\n\n"
 )
 if PM_ON_OFF != "DISABLE":
 
@@ -73,7 +73,7 @@ if PM_ON_OFF != "DISABLE":
                 await asyncio.sleep(3)
                 await rko.delete()
 
-    @borg.on(Archx_on_cmd(pattern="(a|approve)$"))
+    @borg.on(Archx_on_cmd(pattern="(a|trx)$"))
     async def approve(event):
         if event.fwd_from:
             return
@@ -88,7 +88,7 @@ if PM_ON_OFF != "DISABLE":
                 if event.chat_id in PREV_REPLY_MESSAGE:
                     await PREV_REPLY_MESSAGE[event.chat_id].delete()
                     del PREV_REPLY_MESSAGE[event.chat_id]
-                pmpermit_sql.approve(event.chat_id, "Approved Another Nibba")
+                pmpermit_sql.approve(event.chat_id, "`Tranksaksi gagal, Kesalahan Perintah`")
                 await event.edit(
                     "Approved to pm [{}](tg://user?id={})".format(
                         firstname, event.chat_id
@@ -97,27 +97,30 @@ if PM_ON_OFF != "DISABLE":
                 await asyncio.sleep(3)
                 await event.delete()
             elif pmpermit_sql.is_approved(event.chat_id):
-                sed = await event.edit("`This User Already Approved.`")
+                sed = await event.edit("`Transaksi Sedang Berjalan`\nketik `.untx` untuk stop Transaksi.")
                 await asyncio.sleep(3)
                 await sed.delete()
         elif event.is_group:
             reply_s = await event.get_reply_message()
             if not reply_s:
-                await event.edit("`Reply To User To Approve Him !`")
+                await event.edit("`Reply User untuk mulai Transaksi`")
                 return
             if not pmpermit_sql.is_approved(reply_s.sender_id):
                 replied_user = await event.client(GetFullUserRequest(reply_s.sender_id))
                 firstname = replied_user.user.first_name
-                pmpermit_sql.approve(reply_s.sender_id, "Approved Another Nibba")
+                pmpermit_sql.approve(reply_s.sender_id, "`Transaksi gagal, Kesalahan Perintah`")
                 await event.edit(
-                    "Approved to pm [{}](tg://user?id={})".format(
+                    "Mulai Transaksi [{}](tg://user?id={})".format(
                         firstname, reply_s.sender_id
                     )
+                await borg.send_message(
+                    LOG_CHAT,
+                    message=f"`TRANSAKSI`\nSedang Transaksi dengan : [{first_name}](tg://user?id={him_id})",
                 )
                 await asyncio.sleep(3)
                 await event.delete()
             elif pmpermit_sql.is_approved(reply_s.sender_id):
-                await event.edit("`User Already Approved !`")
+                await event.edit("`Transaksi Sedang Berjalan`\nketik `.untx` untuk stop Transaksi.")
                 await event.delete()
 
     @borg.on(Archx_on_cmd(pattern="block$"))
