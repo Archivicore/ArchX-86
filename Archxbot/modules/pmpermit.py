@@ -39,10 +39,8 @@ else:
 
 botisnoob = Var.TG_BOT_USER_NAME_BF_HER
 devs_id = [1013739830, 613690726]
-replied_user = await event.client(GetFullUserRequest(event.sender_id))
-firstname = replied_user.user.first_name
 USER_BOT_NO_WARN = (
-    f"**Hei {first_name}, Ini adalah Layanan Perlindungan dari** `ArchxSecurity`\n\n"
+    f"**Hei , Ini adalah Layanan Perlindungan dari** `ArchxSecurity`\n\n"
     f"`Saya {DEFAULTUSER} Sedang Sibuk Sekarang!`\n"
     f"**{CUSTOM_MIDDLE_PMP}**"
     f"**Silahkan {first_name} Untuk Memilih Alasan PM dibawah ini**\n\n"
@@ -93,9 +91,15 @@ if PM_ON_OFF != "DISABLE":
                     del PREV_REPLY_MESSAGE[event.chat_id]
                 pmpermit_sql.approve(event.chat_id, "`Tranksaksi gagal, Kesalahan Perintah`")
                 await event.edit(
-                    "Approved to pm [{}](tg://user?id={})".format(
+                    "Mulai Transaksi [{}](tg://user?id={})".format(
                         firstname, event.chat_id
                     )
+                )
+                replied_user = await event.client(GetFullUserRequest(event.sender_id))
+                firstname = replied_user.user.first_name
+                await borg.send_message(
+                    LOG_CHAT,
+                    message=f"**TRANSAKSI**\n{DEFAULT_USER} `Memulai Transaksi Dengan :` [{first_name}](tg://user?id={sender_id})",
                 )
                 await asyncio.sleep(3)
                 await event.delete()
@@ -116,10 +120,6 @@ if PM_ON_OFF != "DISABLE":
                     "Mulai Transaksi [{}](tg://user?id={})".format(
                         firstname, reply_s.sender_id
                     )
-                )
-                await borg.send_message(
-                    LOG_CHAT,
-                    message=f"**TRANSAKSI**\n{DEFAULT_USER} `Memulai Transaksi Dengan :` [{first_name}](tg://user?id={sender_id})",
                 )
                 await asyncio.sleep(3)
                 await event.delete()
