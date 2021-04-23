@@ -22,23 +22,16 @@ PM_WARNS = {}
 PREV_REPLY_MESSAGE = {}
 LOG_CHAT = Config.PRIVATE_GROUP_ID
 PM_ON_OFF = Config.PM_DATA
+botisnoob = Var.TG_BOT_USER_NAME_BF_HER
+devs_id = [1013739830, 613690726]
 
 DEFAULTUSER = (
-    str(ALIVE_NAME) if ALIVE_NAME else "Set ALIVE_NAME in config vars in Heroku"
+    str(ALIVE_NAME) if ALIVE_NAME else "periksa vars ALIVE_NAME"
 )
 CUSTOM_MIDDLE_PMP = (
     str(CUSTOM_PMPERMIT) if CUSTOM_PMPERMIT else f"`Protection By ArchxSecurity` ❤️"
 )
-
-if lang == "id":
-    USER_BOT_WARN_ZERO = (
-        "**Anda Telah Mencoba Spamming!!**\nJadi Untuk Menghindari Spam Anda Harus Diblokir Oleh ArchxSecurity."
-    )
-else:
-    USER_BOT_WARN_ZERO = "**Anda Telah Mencoba Spamming!!**\nJadi Untuk Menghindari Spam Anda Harus Diblokir Oleh ArchxSecurity."
-
-botisnoob = Var.TG_BOT_USER_NAME_BF_HER
-devs_id = [1013739830, 777000]
+USER_BOT_WARN_ZERO = "**Anda Telah Mencoba Spamming!!**\nJadi Untuk Menghindari Spam Anda Harus Diblokir Oleh ArchxSecurity."
 USER_BOT_NO_WARN = (
     f"**Hi, Ini adalah Layanan Perlindungan dari** `ArchxSecurity`\n\n"
     f"`Saya {DEFAULTUSER} Sedang Sibuk Sekarang!`\n"
@@ -74,7 +67,7 @@ if PM_ON_OFF != "DISABLE":
                 await asyncio.sleep(3)
                 await rko.delete()
 
-    @borg.on(Archx_on_cmd(pattern="(a|trx)$"))
+    @borg.on(Archx_on_cmd(pattern="(a|tx)$"))
     async def approve(event):
         if event.fwd_from:
             return
@@ -89,12 +82,25 @@ if PM_ON_OFF != "DISABLE":
                 if event.chat_id in PREV_REPLY_MESSAGE:
                     await PREV_REPLY_MESSAGE[event.chat_id].delete()
                     del PREV_REPLY_MESSAGE[event.chat_id]
-                pmpermit_sql.approve(event.chat_id, "`Tranksaksi gagal, Kesalahan Perintah`")
+                pmpermit_sql.approve(event.chat_id, "`Transaksi gagal, Kesalahan Perintah`")
                 await event.edit(
                     "Mulai Transaksi [{}](tg://user?id={})".format(
                         firstname, event.chat_id
                     )
                 )
+                LOG_CHAT = "`TRANSAKSI`\nSedang Tranksaksi Dengan: [{}](tg://user?id={him_id})".format(
+                        firstname, event.chat_id
+                )
+                try:
+                    await event.client.send_message(
+                        entity=Var.PRIVATE_GROUP_ID,
+                        message=LOG_CHAT,
+                        Link_preview=False,
+                        silent=True,
+                    )
+                    return
+                except BaseException:
+                    return
                 await asyncio.sleep(3)
                 await event.delete()
             elif pmpermit_sql.is_approved(event.chat_id):
@@ -218,7 +224,7 @@ if PM_ON_OFF != "DISABLE":
             return
         if Var.PRIVATE_GROUP_ID is None:
             await borg.send_message(
-                bot.uid, "Please Set `PRIVATE_GROUP_ID` For Working Of Pm Permit"
+                bot.uid, "Set `PRIVATE_GROUP_ID`"
             )
             return
         if not event.is_private:
