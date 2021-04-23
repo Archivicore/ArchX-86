@@ -1,4 +1,4 @@
-# ARHICIVORE-X ARCH-86
+# ARCH-86
 
 <p align="center"><a href="https://t.me/allianceofficial"><img src="https://telegra.ph/file/d85c7eefaeeea3320818f.jpg" width="1000"></a></p> 
 <h1 align="center"><b>ARHICIVORE-X ARCHBOT-86  </b></h1>
