@@ -43,7 +43,7 @@ USER_BOT_NO_WARN = (
     f"**Hei , Ini adalah Layanan Perlindungan dari** `ArchxSecurity`\n\n"
     f"`Saya {DEFAULTUSER} Sedang Sibuk Sekarang!`\n"
     f"**{CUSTOM_MIDDLE_PMP}**"
-    f"**Silahkan {first_name} Untuk Memilih Alasan PM dibawah ini**\n\n"
+    f"**Silahkan Untuk Memilih Alasan PM dibawah ini**\n\n"
 )
 if PM_ON_OFF != "DISABLE":
 
