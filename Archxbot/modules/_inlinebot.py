@@ -43,7 +43,7 @@ if lang == "si":
         elif event.query.user_id == bot.uid and query == "stats":
             result = builder.article(
                 title="Stats",
-                text=f"**Menampilkan Stats Untuk {DEFAULTUSER}'s Archxbot** \nNote : Hanya Pemilik Yang Dapat Memeriksa Ini \n(C) [Archxbot](https://github.com/Archivicore/ArchX-86)",
+                text=f"**Menampilkan Stats Untuk {DEFAULTUSER}'s** \nNote : Hanya Pemilik Yang Dapat Memeriksa Ini.\n(C) [Archxbot](https://t.me/ArchivicoreOfficial)",
                 buttons=[
                     [custom.Button.inline("Tampilkan Stats ?", data="terminator")],
                     [Button.url("Whoami ?", "https://t.me/Archivicore"),
@@ -56,15 +56,10 @@ if lang == "si":
                 file=WARN_PIC,
                 text=query,
                 buttons=[
-                    [custom.Button.inline("Bertanya ?", data="askme")],
-                    [
-                        custom.Button.inline(
-                            "Ngobrol ? ?",
-                            data="whattalk",
-                        )
-                    ],
-                    [custom.Button.inline("Transaksi ?", data="cashless")],
-                    [custom.Button.inline("Spamming ?", data="dontspamnigga")],
+                    [custom.Button.inline("Chatting", data="askme"),
+                    custom.Button.inline("Jasa Rekber", data="whattalk",)],
+                    [custom.Button.inline("Ber-Transaksi", data="cashless")],
+                    [custom.Button.inline("Spamming", data="dontspamnigga")],
                 ],
             )
             await event.answer([result])
@@ -225,12 +220,12 @@ if lang == "si":
             return
         await event.get_chat()
         him_id = event.query.user_id
-        await event.edit("Pilihan Diterima! ✔️")
-        text2 = "Baik. Mohon Tunggu Sampai {DEFAULTUSER} Menyetujui.\nJangan Spam Atau Coba Apa Pun!.\nTerima kasih telah menghubungi saya."
+        await event.edit("Pilihan Chatting Diterima! ✔️")
+        text2 = "Baik. Mohon Tunggu Sampai Kami Menyetujui.\nJangan Spam Atau Coba Apa Pun!.\nTerima kasih telah menghubungi saya."
         await borg.send_message(event.query.user_id, text2)
         await borg.send_message(
             LOG_CHAT,
-            message=f"{DEFAULTUSER}\n[User ini](tg://user?id={him_id}) Ingin Berbicara Dengan Anda.",
+            message=f"[Client](tg://user?id={him_id}) Ingin Chatting sesuatu di PM.",
             buttons=[Button.url("Hubungi Dia", f"tg://user?id={him_id}")],
         )
 
@@ -242,12 +237,12 @@ if lang == "si":
             return
         await event.get_chat()
         him_id = event.query.user_id
-        await event.edit("Pilihan Diterima! ✔️")
-        text3 = "Ok, Anda dapat Bertanya Setelah {DEFAULTUSER} Menyetujui Anda.\nMohon Tunggu."
+        await event.edit("Pilihan Jasa Rekber Diterima! ✔️")
+        text3 = "Ok, Anda dapat melakukan Rekber Setelah Kami menyetujui Anda.\nMohon tunggu."
         await borg.send_message(event.query.user_id, text3)
         await borg.send_message(
             LOG_CHAT,
-            message=f"{DEFAULTUSER}\n[User ini](tg://user?id={him_id}) Ingin Menanyakan Sesuatu.",
+            message=f"[Client](tg://user?id={him_id}) Ingin Menggunakan Jasa Rekber.",
             buttons=[Button.url("Hubungi Dia", f"tg://user?id={him_id}")],
         )
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"cashless")))
@@ -258,12 +253,12 @@ if lang == "si":
             return
         await event.get_chat()
         him_id = event.query.user_id
-        await event.edit("Pilihan Diterima! ✔️")
-        text4 = "Ok, Anda dapat Bertanya Setelah {DEFAULTUSER} Menyetujui Anda.\nMohon Tunggu."
+        await event.edit("Pilihan Transaksi Diterima! ✔️")
+        text4 = "Ok, Anda dapat bertransaksi setelah Kami menyetujui Anda.\nMohon tunggu."
         await borg.send_message(event.query.user_id, text4)
         await borg.send_message(
             LOG_CHAT,
-            message=f"{DEFAULTUSER} Ada yang ingin ber-Transaksi Sesuatu Denganmu.",
+            message=f"[Client](tg://user?id={him_id}) Masuk ke Antrian Transaksi baru.",
             buttons=[Button.url("Hubungi Segera", f"tg://user?id={him_id}")],
         )
 
