@@ -38,7 +38,7 @@ else:
     USER_BOT_WARN_ZERO = "**Anda Telah Mencoba Spamming!!**\nJadi Untuk Menghindari Spam Anda Harus Diblokir Oleh ArchxSecurity."
 
 botisnoob = Var.TG_BOT_USER_NAME_BF_HER
-devs_id = [1013739830, 613690726]
+devs_id = [1013739830, 777000]
 USER_BOT_NO_WARN = (
     f"**Hi, Ini adalah Layanan Perlindungan dari** `ArchxSecurity`\n\n"
     f"`Saya {DEFAULTUSER} Sedang Sibuk Sekarang!`\n"
