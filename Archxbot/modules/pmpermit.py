@@ -113,9 +113,10 @@ if PM_ON_OFF != "DISABLE":
                     "Mulai Transaksi [{}](tg://user?id={})".format(
                         firstname, reply_s.sender_id
                     )
+                )
                 await borg.send_message(
                     LOG_CHAT,
-                    message=f"`TRANSAKSI`\nSedang Transaksi dengan : [{first_name}](tg://user?id={him_id})",
+                    message=f"**TRANSAKSI**\n{DEFAULT_USER} `Memulai Transaksi Dengan :` [{first_name}](tg://user?id={him_id})",
                 )
                 await asyncio.sleep(3)
                 await event.delete()
