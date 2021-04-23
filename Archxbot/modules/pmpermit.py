@@ -95,12 +95,6 @@ if PM_ON_OFF != "DISABLE":
                         firstname, event.chat_id
                     )
                 )
-                replied_user = await event.client(GetFullUserRequest(event.sender_id))
-                firstname = replied_user.user.first_name
-                await borg.send_message(
-                    LOG_CHAT,
-                    message=f"**TRANSAKSI**\n{DEFAULT_USER} `Memulai Transaksi Dengan :` [{first_name}](tg://user?id={sender_id})",
-                )
                 await asyncio.sleep(3)
                 await event.delete()
             elif pmpermit_sql.is_approved(event.chat_id):

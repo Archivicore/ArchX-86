@@ -206,7 +206,7 @@ if lang == "id":
         await borg(functions.contacts.BlockRequest(event.query.user_id))
         await borg.send_message(
             LOG_CHAT,
-            f"**Spammer Detect!.**\n[{first_name}](tg://user?id={him_id}) Mencoba Untuk Mengirim Spam diPM.",
+            f"**Spammer Detect!.**\n[Client](tg://user?id={him_id}) Mencoba Untuk Mengirim Spam diPM.",
         )
 
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"backme")))
@@ -234,7 +234,7 @@ if lang == "id":
         await borg.send_message(event.query.user_id, text2)
         await borg.send_message(
             LOG_CHAT,
-            message=f"[{first_name}](tg://user?id={him_id}) Ingin Chatting sesuatu di PM.",
+            message=f"[Client](tg://user?id={him_id}) Ingin Chatting sesuatu di PM.",
         )
 
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"transx")))
@@ -250,7 +250,7 @@ if lang == "id":
         await borg.send_message(event.query.user_id, text3)
         await borg.send_message(
             LOG_CHAT,
-            message=f"[{first_name}](tg://user?id={him_id}) Masuk ke Antrian Transaksi baru.",
+            message=f"[Client](tg://user?id={him_id}) Masuk ke Antrian Transaksi baru.",
         )
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"pmklik")))
     async def rip(event):
