@@ -40,10 +40,10 @@ else:
 botisnoob = Var.TG_BOT_USER_NAME_BF_HER
 devs_id = [1013739830, 613690726]
 USER_BOT_NO_WARN = (
-    f"**Hei , Ini adalah Layanan Perlindungan dari** `ArchxSecurity`\n\n"
+    f"**Hei, Ini adalah Layanan Perlindungan dari** `ArchxSecurity`\n\n"
     f"`Saya {DEFAULTUSER} Sedang Sibuk Sekarang!`\n"
     f"**{CUSTOM_MIDDLE_PMP}**"
-    f"**Silahkan Untuk Memilih Alasan PM dibawah ini**\n\n"
+    f"**Silahkan Kamu Untuk Memilih Alasan PM dibawah ini**\n\n"
 )
 if PM_ON_OFF != "DISABLE":
 
