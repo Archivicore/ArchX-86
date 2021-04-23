@@ -1,6 +1,6 @@
 from var import Var
-from fridayubot.Configs import Config
-from fridayubot.utils import friday_on_cmd
+from Archxbot.Configs import Config
+from Archxbot.utils import Archx_on_cmd
 
 issudousing = Config.SUDO_USERS
 islogokay = Config.PRIVATE_GROUP_ID
