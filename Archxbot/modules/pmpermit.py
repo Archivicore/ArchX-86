@@ -40,7 +40,7 @@ else:
 botisnoob = Var.TG_BOT_USER_NAME_BF_HER
 devs_id = [1013739830, 613690726]
 USER_BOT_NO_WARN = (
-    f"**Hei, Ini adalah Layanan Perlindungan dari** `ArchxSecurity`\n\n"
+    f"**Hi, Ini adalah Layanan Perlindungan dari** `ArchxSecurity`\n\n"
     f"`Saya {DEFAULTUSER} Sedang Sibuk Sekarang!`\n"
     f"**{CUSTOM_MIDDLE_PMP}**"
     f"**Silahkan Kamu Untuk Memilih Alasan PM dibawah ini**\n\n"
