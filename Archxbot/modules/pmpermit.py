@@ -39,10 +39,8 @@ else:
 
 botisnoob = Var.TG_BOT_USER_NAME_BF_HER
 devs_id = [1013739830, 613690726]
-target = await event.client(GetFullUserRequest(event.query.user_id))
-first_name = html.escape(target.user.first_name)
-if first_name is not None:
-first_name = first_name.replace("\u2060", "")
+replied_user = await event.client(GetFullUserRequest(event.sender_id))
+firstname = replied_user.user.first_name
 USER_BOT_NO_WARN = (
     f"**Hei {first_name}, Ini adalah Layanan Perlindungan dari** `ArchxSecurity`\n\n"
     f"`Saya {DEFAULTUSER} Sedang Sibuk Sekarang!`\n"
