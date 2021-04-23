@@ -81,6 +81,15 @@ if lang == "id":
             reply_popp_up_alert = "Silakan pakai bot mu sendiri, dan jangan gunakan punyaku!"
             await event.answer(reply_popp_up_alert, cache_time=0, alert=True)
 
+    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"reopen")))
+    async def megic(event):
+        if event.query.user_id == bot.uid:
+            buttons = paginate_help(0, CMD_LIST, "helpme")
+            await event.edit("Menu Re-opened", buttons=buttons)
+        else:
+            reply_pop_up_alert = "This bot ain't for u!!"
+            await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
+
     @tgbot.on(
         events.callbackquery.CallbackQuery(  # pylint:disable=E0602
             data=re.compile(b"helpme_prev\((.+?)\)")
@@ -258,7 +267,9 @@ if lang == "id":
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"close")))
     async def on_plug_in_callback_query_handler(event):
         if event.query.user_id == bot.uid:
-            await event.edit("Menu Ditutup")
+            await event.edit(
+                "Menu Ditutup", buttons=[Button.inline("Re-open Menu", data="reopen")]
+            )
         else:
             reply_pop_up_alert = "Kamu tidak mempunyai Hak untuk menutup menu!"
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
