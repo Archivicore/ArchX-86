@@ -1,7 +1,12 @@
 {
   "name": "Archxbot",
+<<<<<<< HEAD
   "description": "A Remix of Userbots on Github By @ArchivicoreOfficial",
   "logo": "https://telegra.ph/file/fb0cf5492d335e9dc7423.jpg",
+=======
+  "description": "A Remix of Userbots on Github By @Archivicore",
+  "logo": "https://telegra.ph/file/3ecf95474e5475c83fd7f.jpg",
+>>>>>>> 3738bc9ff52c705eb6648aba73d4bb0a53712168
   "keywords": [
     "telegram",
     "Archxbot",

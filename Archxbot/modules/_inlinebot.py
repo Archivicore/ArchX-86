@@ -1,5 +1,6 @@
 import os
 import re
+import html
 import urllib
 from math import ceil
 from re import findall
@@ -9,6 +10,7 @@ import requests
 from pornhub_api import PornhubApi
 from search_engine_parser import GoogleSearch
 from telethon import Button, custom, events, functions
+from telethon.tl.functions.users import GetFullUserRequest
 from youtube_search import YoutubeSearch
 
 from Archxbot import ALIVE_NAME, CMD_HELP, CMD_LIST, lang
@@ -17,13 +19,13 @@ from Archxbot.modules import inlinestats
 
 PMPERMIT_PIC = os.environ.get("PMPERMIT_PIC", None)
 if PMPERMIT_PIC is None:
-    WARN_PIC = "https://telegra.ph/file/de498c6d6b067343a3edf.jpg"
+    WARN_PIC = "https://telegra.ph/file/d85c7eefaeeea3320818f.jpg"
 else:
     WARN_PIC = PMPERMIT_PIC
 LOG_CHAT = Config.PRIVATE_GROUP_ID
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Archxbot"
 
-if lang == "si":
+if lang == "id":
 
     @tgbot.on(events.InlineQuery)
     async def inline_handler(event):
@@ -34,7 +36,7 @@ if lang == "si":
             rev_text = query[::-1]
             buttons = paginate_help(0, CMD_HELP, "helpme")
             result = builder.article(
-                "© Userbot Help",
+                "© Archxbot Help",
                 text="{}\nCurrently Loaded Plugins: {}".format(query, len(CMD_LIST)),
                 buttons=buttons,
                 link_preview=False,
@@ -43,27 +45,24 @@ if lang == "si":
         elif event.query.user_id == bot.uid and query == "stats":
             result = builder.article(
                 title="Stats",
-                text=f"**Showing Stats For {DEFAULTUSER}'s Archxbot** \nNote --> Only Owner Can Check This \n(C) [Archxbot](https://github.com/Archivicore/ArchX-86)",
+                text=f"**Menampilkan Stats Untuk {DEFAULTUSER}'s** \nNote : Hanya Pemilik Yang Dapat Memeriksa Ini.\n© [Archxbot](https://t.me/ArchivicoreOfficial)",
                 buttons=[
-                    [custom.Button.inline("Show Stats ?", data="terminator")],
-                    [Button.url("Developed By", "https://github.com/Starkgang")],
-                    [Button.url("Support Chat❤️", "t.me/ArchivicoreOfficial")],
+                    [custom.Button.inline("Tampilkan Stats ?", data="terminator")],
+                    [Button.url("Dev ArchX-86", "https://t.me/Archivicore"),
+                    Button.url("Join Channel", "https://t.me/ArchivicoreOfficial")],
                 ],
+                link_preview=False,
             )
             await event.answer([result])
-        elif event.query.user_id == bot.uid and query.startswith("**Hello"):
+        elif event.query.user_id == bot.uid and query.startswith("**Hi"):
             result = builder.photo(
                 file=WARN_PIC,
                 text=query,
                 buttons=[
-                    [custom.Button.inline("Spamming", data="dontspamnigga")],
-                    [
-                        custom.Button.inline(
-                            "Casual Talk",
-                            data="whattalk",
-                        )
-                    ],
-                    [custom.Button.inline("Requesting", data="askme")],
+                    [custom.Button.inline("Mulai Chat", data="chat"),
+                    custom.Button.inline("Transaksi", data="transx"),
+                    custom.Button.url("Join Channel", "https://t.me/ArchivicoreOfficial")],
+                    [custom.Button.inline("Ekstra", data="pmklik")],
                 ],
             )
             await event.answer([result])
@@ -80,8 +79,17 @@ if lang == "si":
             # https://t.me/TelethonChat/115200
             await event.edit(buttons=buttons)
         else:
-            reply_popp_up_alert = "ඔය මොකද කරන්නෙ, මේක ඔයාගෙ නෙමේ!"
+            reply_popp_up_alert = "Silakan pakai bot mu sendiri, dan jangan gunakan punyaku!"
             await event.answer(reply_popp_up_alert, cache_time=0, alert=True)
+
+    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"reopen")))
+    async def megic(event):
+        if event.query.user_id == bot.uid:
+            buttons = paginate_help(0, CMD_LIST, "helpme")
+            await event.edit("Menu Re-opened", buttons=buttons)
+        else:
+            reply_pop_up_alert = "Silakan pakai bot mu sendiri, dan jangan gunakan punyaku!"
+            await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
     @tgbot.on(
         events.callbackquery.CallbackQuery(  # pylint:disable=E0602
@@ -97,7 +105,7 @@ if lang == "si":
             # https://t.me/TelethonChat/115200
             await event.edit(buttons=buttons)
         else:
-            reply_pop_up_alert = "මොන පිස්සෙක්ද තෝ? උඹටම කියල බොටෙක් හදාගනිම්.!"
+            reply_pop_up_alert = "Silakan pakai bot mu sendiri, dan jangan gunakan punyaku!"
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
     @tgbot.on(
@@ -107,7 +115,7 @@ if lang == "si":
     )
     async def on_plug_in_callback_query_handler(event):
         if not event.query.user_id == bot.uid:
-            sedok = "මොන පිස්සෙක්ද තෝ? උඹටම කියල බොටෙක් හදාගනිම්."
+            sedok = "Kamu Siapa ?, jangan gunakan punyaku!"
             await event.answer(sedok, cache_time=0, alert=True)
             return
         plugin_name = event.data_match.group(1).decode("UTF-8")
@@ -141,7 +149,7 @@ if lang == "si":
             text = inlinestats
             await event.answer(text, alert=True)
         else:
-            txt = "You Can't View My Masters Stats"
+            txt = "Anda Tidak Dapat Melihat Statistik Archx Saya."
             await event.answer(txt, alert=True)
 
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"yt_dla_(.*)")))
@@ -149,7 +157,7 @@ if lang == "si":
         yt_dl_data = event.data_match.group(1).decode("UTF-8")
         link_s = yt_dl_data
         if event.query.user_id != bot.uid:
-            text = f"Please Get Your Own Archxbot And Don't Waste My Time"
+            text = f"Silakan Dapatkan Archxbot Anda Sendiri Dan Jangan Buang Waktu Saya."
             await event.answer(text, alert=True)
             return
         is_it = True
@@ -160,7 +168,7 @@ if lang == "si":
         sun = event.data_match.group(1).decode("UTF-8")
 
         if event.query.user_id != bot.uid:
-            text = f"Please Get Your Own Archx And Don't Waste My Resources"
+            text = f"Silakan Dapatkan Archxbot Anda Sendiri Dan Jangan Buang Waktu Saya."
             await event.answer(text, alert=True)
             return
         await _deezer_dl(sun, event, tgbot)
@@ -170,7 +178,7 @@ if lang == "si":
         yt_dl_data = event.data_match.group(1).decode("UTF-8")
         link_s = yt_dl_data
         if event.query.user_id != bot.uid:
-            text = f"Please Get Your Own Archxbot And Don't Waste My Resources"
+            text = f"Silakan Dapatkan Archxbot Anda Sendiri Dan Jangan Buang Waktu Saya."
             await event.answer(text, alert=True)
             return
         is_it = False
@@ -180,79 +188,137 @@ if lang == "si":
     async def rip(event):
         link_s = event.pattern_match.group(1)
         if event.query.user_id != bot.uid:
-            text = f"Please Get Your Own Archxbot And Don't Waste My Resources."
+            text = f"Silakan Dapatkan Archxbot Anda Sendiri Dan Jangan Buang Waktu Saya."
             await event.answer(text, alert=True)
             return
         await _phdl(link_s, event, tgbot)
 
-    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"dontspamnigga")))
+    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"jgnspam")))
     async def rip(event):
         if event.query.user_id == bot.uid:
-            sedok = "Master, You Don't Need To Use This."
+            sedok = "Anda tidak perlu menggunakan ini."
             await event.answer(sedok, cache_time=0, alert=True)
             return
         await event.get_chat()
         him_id = event.query.user_id
-        text1 = "ඔයා ඇවිත් තියෙන්නෙ හොඳ දේකට නෙමේ.. ඔයා තෝරපු එක පිළිගන්න බෑ.. ඒක නිසා ඔයාව Block කරනවා"
-        await event.edit("ඔයා තෝරපු එක පිළිගන්න බෑ ❌")
+        text1 = "Anda Telah Memilih Opsi Terlarang.\nAnda Telah Diblokir Sementara Oleh `ArchxSecurity`"
+        await event.edit("Pilihan Tidak Diterima! ❌")
         await borg.send_message(event.query.user_id, text1)
         await borg(functions.contacts.BlockRequest(event.query.user_id))
         await borg.send_message(
             LOG_CHAT,
-            f"ආයුබෝවන්, මෝඩ  [පකයා](tg://user?id={him_id}) තහන්ම් එකක් තෝරපු නිසා Block කරා",
+            f"**Spammer Detect!.**\n[Client](tg://user?id={him_id}) Mencoba Untuk Mengirim Spam diPM.",
         )
 
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"backme")))
     async def sed(event):
         if event.query.user_id != bot.uid:
-            sedok = "මොන පිස්සෙක්ද තෝ? උඹටම කියල බොටෙක් හදාගනිම්."
+            sedok = "Anda tidak perlu menggunakan ini."
             await event.answer(sedok, cache_time=0, alert=True)
             return
         await event.answer("Back", cache_time=0, alert=False)
         # This Is Copy of Above Code. (C) @SpEcHiDe
         buttons = paginate_help(0, CMD_HELP, "helpme")
-        sed = f"""Archxbot Modules Are Listed Here !\n
-    For More Help or Support contact {DEFAULTUSER} and ask at Archivicore \nCurrently Loaded Plugins: {len(CMD_LIST)}\nCurrently using Language - Sinhala (Sinhalese)"""
+        sed = f"""Archxbot Modul Tercantum Di Sini !\nUntuk Bantuan Lebih Lanjut tanyakan pada @Archivicore \n\nPlugins yang Dimuat Saat Ini: {len(CMD_LIST)}"""
         await event.edit(message=sed, buttons=buttons)
 
-    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"whattalk")))
+    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"chat")))
     async def rip(event):
         if event.query.user_id == bot.uid:
-            sedok = "Master, You Don't Need To Use This."
+            sedok = "Anda tidak perlu menggunakan ini."
             await event.answer(sedok, cache_time=0, alert=True)
             return
         await event.get_chat()
         him_id = event.query.user_id
-        await event.edit("ඔයා තෝරපු එක මම පිළිගන්නවා ✔️")
-        text2 = "හරි දැන් මගේ අයිතිකාරයා ඔයාට මැසේජ් එකක් දානකන් ටිකක් ඉවසල ඉන්න. \nගොඩාක් ස්තූතී මැසේජ් කරාට."
+        await event.edit("Pilihan Chatting Diterima! ✔️")
+        text2 = "Baik. Mohon Tunggu Sampai Kami Menyetujui.\nJangan Spam Atau Coba kirim Apa Pun!.\nTerima kasih telah menghubungi saya."
         await borg.send_message(event.query.user_id, text2)
         await borg.send_message(
             LOG_CHAT,
-            message=f"Hello, [අලුත් පොරක්](tg://user?id={him_id}). ඔයා එක්ක කතා කරන්න ඉල්ලනවා.",
+            message=f"[Client](tg://user?id={him_id}) Ingin Chatting sesuatu di PM.",
         )
 
-    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"askme")))
+    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"transx")))
     async def rip(event):
         if event.query.user_id == bot.uid:
-            sedok = "මහත්තයෝ, ඔයා මේක පාවිච්චි කරන්න ඕන නෑ"
+            sedok = "Anda tidak perlu menggunakan ini."
             await event.answer(sedok, cache_time=0, alert=True)
             return
         await event.get_chat()
         him_id = event.query.user_id
-        await event.edit("ඔයා තෝරපු එක මම පිළිගන්නවා ✔️")
-        text3 = "හරි දැන් මගේ අයිතිකාරයා ඔයාට මැසේජ් එකක් දානකන් ටිකක් ඉවසල ඉන්න. \nගොඩාක් ස්තූතී මැසේජ් කරාට."
+        await event.edit("Pilihan Transaksi Diterima! ✔️")
+        text3 = "Ok, Anda dapat melakukan Transaksi Setelah Kami menyetujui-nya.\nMohon Menunggu, Jangan Spam Atau Coba kirim Apa Pun!."
         await borg.send_message(event.query.user_id, text3)
         await borg.send_message(
             LOG_CHAT,
-            message=f"Hello, [අලුත් පොරකට](tg://user?id={him_id}). ඔයාගෙන් දෙයක් ඉල්ලන්න තියේලු.",
+            message=f"[Client](tg://user?id={him_id}) Masuk ke Antrian Transaksi baru.",
         )
 
+    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"rekber")))
+    async def rip(event):
+        if event.query.user_id == bot.uid:
+            sedok = "Anda tidak perlu menggunakan ini."
+            await event.answer(sedok, cache_time=0, alert=True)
+            return
+        await event.get_chat()
+        sender = await event.client(GetFullUserRequest(await event.get_input_chat()))
+        first_name = sender.user.first_name
+        him_id = event.query.user_id
+        await event.edit("Pilihan Rekber Diterima! ✔️")
+        text3 = "Ok, Anda dapat melakukan Rekber Setelah Kami menyetujui-nya.\nMohon Menunggu, Jangan Spam Atau Coba kirim Apa Pun!."
+        await borg.send_message(event.query.user_id, text3)
+        bruh = "[{}](tg://user?id={}) Masuk ke Antrian Rekber baru.".format(
+                    first_name, event.chat_id
+                )
+        await borg.send_message(LOG_CHAT, bruh)
+        await asyncio.sleep(5)
+        await event.delete()
+
+    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"bantu")))
+    async def rip(event):
+        if event.query.user_id == bot.uid:
+            sedok = "Anda tidak perlu menggunakan ini."
+            await event.answer(sedok, cache_time=0, alert=True)
+            return
+        await event.get_chat()
+        him_id = event.query.user_id
+        await event.edit(
+            f"**Layanan Bantuan {DEFAULTUSER}.**\n\n"
+            "`Powered by` [Archivicore](https//t.me/ArchivicoreOfficial)",
+            buttons=[
+                [Button.url("Pembelian Produk", "https://tme/Archivicore"),
+                Button.url("Layanan Pelanggan", "https://t.me/Archivicore")],
+                [Button.url("Source Code", "https://github.com/Archivicore/ArchX-86")],
+            ],
+            link_preview=False
+        )
+
+    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"pmklik")))
+    async def rip(event):
+        if event.query.user_id == bot.uid:
+            sedok = "Anda tidak perlu menggunakan ini."
+            await event.answer(sedok, cache_time=0, alert=True)
+            return
+        await event.get_chat()
+        him_id = event.query.user_id
+        await event.edit(
+            f"**Ini adalah Keamanan PM {DEFAULTUSER} untuk Menjauhkan pelaku spam dan dapat Memblokir Otomatis pelaku spam.**"
+            "\n\n`Protected by` [Archivicore](https//t.me/ArchivicoreOfficial)",
+            buttons=[
+                [Button.inline("Rekber", data="rekber"),
+                Button.inline("Bantuan", "bantu")],
+                [Button.inline("SPAM", data="jgnspam")],
+            ],
+        )
+        
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"close")))
     async def on_plug_in_callback_query_handler(event):
         if event.query.user_id == bot.uid:
-            await event.edit("menu closed")
+            await event.edit(
+                "Menu Ditutup", buttons=[Button.inline("Re-open Menu", data="reopen")]
+            )
         else:
-            reply_pop_up_alert = "මොන පිස්සෙක්ද තෝ? උඹටම කියල බොටෙක් හදාගනිම්. "
+            reply_pop_up_alert = "Kamu tidak mempunyai Hak untuk menutup menu!"
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
     def paginate_help(page_number, loaded_modules, prefix):
@@ -283,11 +349,11 @@ if lang == "si":
             ] + [
                 (
                     custom.Button.inline(
-                        "⏪ Previous", data="{}_prev({})".format(prefix, modulo_page)
+                        "<", data="{}_prev({})".format(prefix, modulo_page)
                     ),
-                    custom.Button.inline("Close", data="close"),
+                    custom.Button.inline("x", data="close"),
                     custom.Button.inline(
-                        "Next ⏩", data="{}_next({})".format(prefix, modulo_page)
+                        ">", data="{}_next({})".format(prefix, modulo_page)
                     ),
                 )
             ]
