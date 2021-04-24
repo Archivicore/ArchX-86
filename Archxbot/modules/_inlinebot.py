@@ -261,6 +261,8 @@ if lang == "id":
             await event.answer(sedok, cache_time=0, alert=True)
             return
         await event.get_chat()
+        sender = await event.client(GetFullUserRequest(await event.get_input_chat()))
+        first_name = sender.user.first_name
         him_id = event.query.user_id
         await event.edit("Pilihan Rekber Diterima! ✔️")
         text3 = "Ok, Anda dapat melakukan Rekber Setelah Kami menyetujui-nya.\nMohon Menunggu, Jangan Spam Atau Coba kirim Apa Pun!."
@@ -278,8 +280,6 @@ if lang == "id":
             sedok = "Anda tidak perlu menggunakan ini."
             await event.answer(sedok, cache_time=0, alert=True)
             return
-        sender = await event.client(GetFullUserRequest(await event.get_input_chat()))
-        first_name = sender.user.first_name
         await event.get_chat()
         him_id = event.query.user_id
         await event.edit(
