@@ -268,8 +268,8 @@ if lang == "id":
         text3 = "Ok, Anda dapat melakukan Rekber Setelah Kami menyetujui-nya.\nMohon Menunggu, Jangan Spam Atau Coba kirim Apa Pun!."
         await borg.send_message(event.query.user_id, text3)
         bruh = "[{}](tg://user?id={}) Masuk ke Antrian Rekber baru.".format(
-                        first_name, event.chat_id
-            )
+                    first_name, event.chat_id
+        )
         await borg.send_message(LOG_CHAT, bruh)
 
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"bantu")))
