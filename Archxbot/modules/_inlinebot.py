@@ -267,8 +267,11 @@ if lang == "id":
         await borg.send_message(event.query.user_id, text3)
         await borg.send_message(
             LOG_CHAT,
-            message=f"[Pelanggan](tg://user?id={him_id}) Masuk ke Antrian Rekber baru.",
-            buttons=[Button.url("Contact Him", f"tg://user?id={him_id}")],
+            message=f"[Pelanggan](tg://user?id={him_id}) Masuk ke Antrian Rekber.",
+            buttons=[
+                [custom.Button.url("[Contact Him]", f"(tg://user?id={him_id})")]
+            ],
+            link_preview=False,
         )
 
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"bantu")))
