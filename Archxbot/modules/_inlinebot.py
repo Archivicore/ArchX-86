@@ -275,10 +275,12 @@ if lang == "id":
         await event.edit(
             f"**Ini adalah Keamanan PM {DEFAULTUSER} untuk Menjauhkan pelaku spam dan dapat Memblokir Otomatis pelaku spam.**"
             "\n\n`Protected by` [Archivicore](https//t.me/ArchivicoreOfficial)",
-            buttons=[Button.inline("Mulai Chat ?", data="chat"),
-                    Button.inline("Kembali", data="kembali")],
-                    [Button.url("Join Channel", "https://t.me/ArchivicoreOfficial")]
-                    )
+            buttons=[
+                [Button.inline("Mulai Chat ?", data="chat"),
+                Button.inline("Kembali", data="kembali")],
+                [Button.url("Join Channel", "https://t.me/ArchivicoreOfficial")],
+            ],
+        )
         
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"close")))
     async def on_plug_in_callback_query_handler(event):
