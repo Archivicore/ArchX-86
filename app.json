@@ -1,7 +1,7 @@
 {
   "name": "Archxbot",
   "description": "A Remix of Userbots on Github By @ArchivicoreOfficial",
-  "logo": "https://telegra.ph/file/e09ddfac100e3028a1b02.jpg",
+  "logo": "https://telegra.ph/file/fb0cf5492d335e9dc7423.jpg",
   "keywords": [
     "telegram",
     "Archxbot",
@@ -108,12 +108,12 @@
     },
      "ALIVE_IMAGE": {
       "description": "Enter Image URL for bot pic ",
-      "value": "https://telegra.ph/file/e09ddfac100e3028a1b02.jpg",
+      "value": "https://telegra.ph/file/fb0cf5492d335e9dc7423.jpg",
       "required": false
     },
      "PMPERMIT_PIC": {
       "description": "Enter Image URL for bot's pmsecurity pic ",
-      "value": "https://telegra.ph/file/e09ddfac100e3028a1b02.jpg",
+      "value": "https://telegra.ph/file/fb0cf5492d335e9dc7423.jpg",
       "required": false
     },    
     
