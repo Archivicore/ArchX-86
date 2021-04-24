@@ -59,10 +59,10 @@ if lang == "id":
                 file=WARN_PIC,
                 text=query,
                 buttons=[
-                    [custom.Button.inline("Chatting", data="chat"),
+                    [custom.Button.inline("Mulai Chat", data="chat"),
                     custom.Button.inline("Transaksi", data="transx"),
-                    custom.Button.inline("Mau Spam", data="jgnspam")],
-                    [custom.Button.inline("Apa ini ?", data="pmklik")],
+                    custom.Button.url("Join Channel", "https://t.me/ArchivicoreOfficial")],
+                    [custom.Button.inline("Ekstra", data="pmklik")],
                 ],
             )
             await event.answer([result])
@@ -254,15 +254,44 @@ if lang == "id":
             message=f"[Client](tg://user?id={him_id}) Masuk ke Antrian Transaksi baru.",
         )
 
-    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"kembali")))
-    async def mundur(event):
+    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"rekber")))
+    async def rip(event):
         if event.query.user_id == bot.uid:
             sedok = "Anda tidak perlu menggunakan ini."
             await event.answer(sedok, cache_time=0, alert=True)
             return
         await event.get_chat()
-        buttons = rip(event)
-        await event.edit("Menu Re-opened", buttons=buttons)
+        him_id = event.query.user_id
+        await event.edit("Pilihan Rekber Diterima! ✔️")
+        text3 = "Ok, Anda dapat melakukan Rekber Setelah Kami menyetujui-nya.\nMohon Menunggu, Jangan Spam Atau Coba kirim Apa Pun!."
+        await borg.send_message(event.query.user_id, text3)
+        bruh = "[{}](tg://user?id={}) Masuk ke Antrian Rekber baru.".format(
+                    first_name, event.chat_id
+                )
+        await borg.send_message(LOG_CHAT, bruh)
+        await asyncio.sleep(5)
+        await event.delete()
+
+    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"bantu")))
+    async def rip(event):
+        if event.query.user_id == bot.uid:
+            sedok = "Anda tidak perlu menggunakan ini."
+            await event.answer(sedok, cache_time=0, alert=True)
+            return
+        sender = await event.client(GetFullUserRequest(await event.get_input_chat()))
+        first_name = sender.user.first_name
+        await event.get_chat()
+        him_id = event.query.user_id
+        await event.edit(
+            f"**Layanan Bantuan {DEFAULTUSER}.**\n\n"
+            "`Powered by` [Archivicore](https//t.me/ArchivicoreOfficial)",
+            buttons=[
+                [Button.inline("Pembelian Produk", "https://tme/Archivicore"),
+                Button.url("Layanan Pelanggan", "https://t.me/Archivicore")],
+                [Button.url("Source Code", "https://github.com/Archivicore/ArchX-86")],
+            ],
+            link_preview=False
+        )
 
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"pmklik")))
     async def rip(event):
@@ -276,9 +305,9 @@ if lang == "id":
             f"**Ini adalah Keamanan PM {DEFAULTUSER} untuk Menjauhkan pelaku spam dan dapat Memblokir Otomatis pelaku spam.**"
             "\n\n`Protected by` [Archivicore](https//t.me/ArchivicoreOfficial)",
             buttons=[
-                [Button.inline("Mulai Chat ?", data="chat"),
-                Button.inline("Kembali", data="kembali")],
-                [Button.url("Join Channel", "https://t.me/ArchivicoreOfficial")],
+                [Button.inline("Rekber", data="rekber"),
+                Button.url("Bantuan", "bantu")],
+                [Button.url("SPAM", data="jgnspam")],
             ],
         )
         
