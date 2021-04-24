@@ -36,7 +36,7 @@ if lang == "id":
             rev_text = query[::-1]
             buttons = paginate_help(0, CMD_HELP, "helpme")
             result = builder.article(
-                "© Userbot Help",
+                "© Archxbot Help",
                 text="{}\nCurrently Loaded Plugins: {}".format(query, len(CMD_LIST)),
                 buttons=buttons,
                 link_preview=False,
@@ -45,7 +45,7 @@ if lang == "id":
         elif event.query.user_id == bot.uid and query == "stats":
             result = builder.article(
                 title="Stats",
-                text=f"**Menampilkan Stats Untuk {DEFAULTUSER}'s** \nNote : Hanya Pemilik Yang Dapat Memeriksa Ini.\n(C) [Archxbot](https://t.me/ArchivicoreOfficial)",
+                text=f"**Menampilkan Stats Untuk {DEFAULTUSER}'s** \nNote : Hanya Pemilik Yang Dapat Memeriksa Ini.\n© [Archxbot](https://t.me/ArchivicoreOfficial)",
                 buttons=[
                     [custom.Button.inline("Tampilkan Stats ?", data="terminator")],
                     [Button.url("Dev ArchX-86", "https://t.me/Archivicore"),
@@ -201,7 +201,7 @@ if lang == "id":
             return
         await event.get_chat()
         him_id = event.query.user_id
-        text1 = "Anda Telah Memilih Opsi Terlarang. Oleh karena itu, Anda Telah Diblokir Oleh ArchxSecurity"
+        text1 = "Anda Telah Memilih Opsi Terlarang.\nAnda Telah Diblokir Sementara Oleh `ArchxSecurity`"
         await event.edit("Pilihan Tidak Diterima! ❌")
         await borg.send_message(event.query.user_id, text1)
         await borg(functions.contacts.BlockRequest(event.query.user_id))
@@ -253,6 +253,17 @@ if lang == "id":
             LOG_CHAT,
             message=f"[Client](tg://user?id={him_id}) Masuk ke Antrian Transaksi baru.",
         )
+
+    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"kembali")))
+    async def mundur(event):
+        if event.query.user_id == bot.uid:
+            sedok = "Anda tidak perlu menggunakan ini."
+            await event.answer(sedok, cache_time=0, alert=True)
+            return
+        await event.get_chat()
+        buttons = rip(event)
+        await event.edit("Menu Re-opened", buttons=buttons)
+
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"pmklik")))
     async def rip(event):
         if event.query.user_id == bot.uid:
@@ -263,9 +274,10 @@ if lang == "id":
         him_id = event.query.user_id
         await event.edit(
             f"**Ini adalah Keamanan PM {DEFAULTUSER} untuk Menjauhkan pelaku spam dan dapat Memblokir Otomatis pelaku spam.**"
-            f"\n\nProtected by [ArchxSecurity](https//t.me/ArchivicoreOfficial)",
+            "\n\n`Protected by` [Archivicore](https//t.me/ArchivicoreOfficial)",
             buttons=[Button.inline("Mulai Chat ?", data="chat"),
-                    Button.url("Join Channel", "https://t.me/ArchivicoreOfficial")],
+                    Button.inline("Kembali", data="kembali")],
+                    [Button.url("Join Channel", "https://t.me/ArchivicoreOfficial")],
         )
         
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"close")))
