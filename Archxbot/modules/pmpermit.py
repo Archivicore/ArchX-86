@@ -152,17 +152,17 @@ if PM_ON_OFF != "DISABLE":
             if pmpermit_sql.is_approved(event.chat_id):
                 pmpermit_sql.disapprove(event.chat_id)
                 await event.edit(
-                    "`Transaksi Dengan:` [{}](tg://user?id={}) `Telah Selesai.`\n**Terima Kasih!**".format(
+                    "`Transaksi Dengan` [{}](tg://user?id={}) `Telah Selesai.`\n**Terima Kasih!**".format(
                         firstname, event.chat_id
                     )
                 )
-                bruh = "[TRANSAKSI SELESAI](https://t.me/Archivicore)\n`Transaksi Dengan:` [{}](tg://user?id={}) `Telah Selesai.`\n**Terima Kasih!**".format(
+                bruh = "[TRANSAKSI SELESAI](https://t.me/Archivicore)\n`Transaksi Dengan` [{}](tg://user?id={}) `Telah Selesai.`\n**Terima Kasih!**".format(
                     firstname, event.chat_id
                 )
                 await borg.send_message(
                     entity=Config.PRIVATE_GROUP_ID,
                     message=bruh,
-                    Link_preview=False,
+                    link_preview=False,
                     silent=True,
                 )
                 await asyncio.sleep(3)
@@ -183,17 +183,17 @@ if PM_ON_OFF != "DISABLE":
                 firstname = replied_user.user.first_name
                 pmpermit_sql.disapprove(reply_s.sender_id)
                 await event.edit(
-                    "`Transaksi Dengan:` [{}](tg://user?id={}) `Telah Selesai.`\n**Terima Kasih!**".format(
+                    "`Transaksi Dengan` [{}](tg://user?id={}) `Telah Selesai.`\n**Terima Kasih!**".format(
                         firstname, reply_s.sender_id
                     )
                 )
-                bruh = "[TRANSAKSI SELESAI](https://t.me/Archivicore)\n`Transaksi Dengan:` [{}](tg://user?id={}) `Telah Selesai.`\n**Terima Kasih!**".format(
+                bruh = "[TRANSAKSI SELESAI](https://t.me/Archivicore)\n`Transaksi Dengan` [{}](tg://user?id={}) `Telah Selesai.`\n**Terima Kasih!**".format(
                     firstname, event.chat_id
                 )
                 await borg.send_message(
                     entity=Config.PRIVATE_GROUP_ID,
                     message=bruh,
-                    Link_preview=False,
+                    link_preview=False,
                     silent=True,
                 )
                 await asyncio.sleep(3)

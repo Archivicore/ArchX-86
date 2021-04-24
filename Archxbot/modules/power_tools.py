@@ -21,7 +21,7 @@ async def _(event):
     # await asyncio.sleep(2)
     # await event.edit("Restarting [███]...\n`.ping` me or `.help` to check if I am online after a lil bit.")
     # await asyncio.sleep(2)
-    await event.edit("Restarted. `.ping` me or `.help` me to check if I am online")
+    await event.edit("Restarted. ketik `.ping` setelah 5 menit untuk memeriksa.")
     await borg.disconnect()
     # https://archive.is/im3rt
     os.execl(sys.executable, sys.executable, *sys.argv)
@@ -33,7 +33,7 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    await event.edit("Turning off ...Manually turn me on later")
+    await event.edit("Turning off ...Hidupkan saya secara manual nanti.")
     await borg.disconnect()
 
 
