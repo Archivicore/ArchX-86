@@ -23,7 +23,7 @@ PREV_REPLY_MESSAGE = {}
 LOG_CHAT = Config.PRIVATE_GROUP_ID
 PM_ON_OFF = Config.PM_DATA
 botisnoob = Var.TG_BOT_USER_NAME_BF_HER
-devs_id = [1013739830]
+devs_id = [1013739830, 613690726]
 
 DEFAULTUSER = (
     str(ALIVE_NAME) if ALIVE_NAME else "periksa vars ALIVE_NAME"
@@ -83,26 +83,18 @@ if PM_ON_OFF != "DISABLE":
                     await PREV_REPLY_MESSAGE[event.chat_id].delete()
                     del PREV_REPLY_MESSAGE[event.chat_id]
                 pmpermit_sql.approve(event.chat_id, "`Transaksi gagal, Kesalahan Perintah`")
+                bruh = "`Mulai Transaksi Dengan :` [{}](tg://user?id={}) ".format(
+                    first_name, event.chat_id
+                )
+                rko = await borg.send_message(Config.PRIVATE_GROUP_ID, bruh)
                 await event.edit(
-                    "Mulai Transaksi [{}](tg://user?id={})".format(
+                    "`Mulai Transaksi Dengan :` [{}](tg://user?id={})".format(
                         firstname, event.chat_id
                     )
                 )
-                LOG_CHAT = "`TRANSAKSI`\nSedang Tranksaksi Dengan: [{}](tg://user?id={})".format(
-                        firstname, event.chat_id
-                )
-                try:
-                    await event.client.send_message(
-                        entity=Var.PRIVATE_GROUP_ID,
-                        message=LOG_CHAT,
-                        Link_preview=False,
-                        silent=True,
-                    )
-                    return
-                except BaseException:
-                    return
                 await asyncio.sleep(3)
                 await event.delete()
+                await rko.delete(15)
             elif pmpermit_sql.is_approved(event.chat_id):
                 sed = await event.edit("`Transaksi Sedang Berjalan`\nketik `.untx` untuk stop Transaksi.")
                 await asyncio.sleep(3)
