@@ -89,7 +89,7 @@ if PM_ON_OFF != "DISABLE":
                     )
                 )
                 bruh = "`Mulai Transaksi Dengan :` [{}](tg://user?id={}) ".format(
-                    first_name, event.chat_id
+                    firstname, event.chat_id
                 )
                 await borg.send_message(Config.PRIVATE_GROUP_ID, bruh)
                 await asyncio.sleep(3)
