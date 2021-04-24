@@ -263,13 +263,13 @@ if lang == "id":
         await event.get_chat()
         replied_user = await event.client(GetFullUserRequest(await event.get_input_chat()))
         first_name = replied_user.user.first_name
-        him_id = event.query.chat_id
+        him_id = event.query.user_id
         await event.edit("Pilihan Rekber Diterima! ✔️")
         text3 = "Ok, Anda dapat melakukan Rekber Setelah Kami menyetujui-nya.\nMohon Menunggu, Jangan Spam Atau Coba kirim Apa Pun!."
-        await borg.send_message(event.query.user_id, text3)
-        bruh = "[{}](tg://user?id={}) Masuk ke Antrian Rekber baru.".format(
-                    first_name, event.chat_id
-        )
+            await borg.send_message(event.query.user_id, text3)
+            bruh = "[{}](tg://user?id={}) Masuk ke Antrian Rekber baru.".format(
+                        first_name, event.chat_id
+            )
         await borg.send_message(LOG_CHAT, bruh)
 
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"bantu")))
