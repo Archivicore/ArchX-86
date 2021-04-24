@@ -29,16 +29,16 @@ DEFAULTUSER = (
     str(ALIVE_NAME) if ALIVE_NAME else "periksa vars ALIVE_NAME"
 )
 CUSTOM_MIDDLE_PMP = (
-    str(CUSTOM_PMPERMIT) if CUSTOM_PMPERMIT else f"Protection By ArchxSecurity ❤️"
+    str(CUSTOM_PMPERMIT) if CUSTOM_PMPERMIT else f"Jangan mengirim spam di sini, Anda akan diblokir secara otomatis!\nProtection By ArchxSecurity ❤️"
 )
 USER_BOT_WARN_ZERO = "**Anda Telah Mencoba Spamming!!**\nJadi Untuk Menghindari Spam Anda Harus Diblokir Oleh ArchxSecurity."
 
 USER_BOT_NO_WARN = (
-    f"**Hi, ini Adalah Pesan Otomatis.\n"
-    f"**{DEFAULTUSER} Sedang Sibuk Sekarang!**\n"
+    f"**Hi, **\n"
+    f"`{CUSTOM_MIDDLE_PMP}`\n"
+    f"`{DEFAULTUSER}` **Sedang Sibuk Sekarang!**\n"
     f"**Apa Alasan Kamu Mengirim pesan ?**\n"
     f"**Silahkan Kamu Tekan Tombol Dibawah ini.**\n\n"
-    f"`{CUSTOM_MIDDLE_PMP}`\n"
 )
 if PM_ON_OFF != "DISABLE":
 
@@ -96,7 +96,6 @@ if PM_ON_OFF != "DISABLE":
                 await borg.send_message(Config.PRIVATE_GROUP_ID, bruh)
                 await asyncio.sleep(3)
                 await event.delete()
-                await bruh.delete(60)
             elif pmpermit_sql.is_approved(event.chat_id):
                 sed = await event.edit("`Transaksi Sedang Berjalan`\nketik `.untx` untuk stop Transaksi.")
                 await asyncio.sleep(3)
@@ -121,7 +120,6 @@ if PM_ON_OFF != "DISABLE":
                 await borg.send_message(Config.PRIVATE_GROUP_ID, bruh)
                 await asyncio.sleep(3)
                 await event.delete()
-                await bruh.delete(60)
             elif pmpermit_sql.is_approved(reply_s.sender_id):
                 await event.edit("`Transaksi Sedang Berjalan!`\nketik `.untx` untuk stop Transaksi.")
                 await event.delete(3)
@@ -161,10 +159,14 @@ if PM_ON_OFF != "DISABLE":
                 bruh = "[TRANSAKSI SELESAI](https://t.me/Archivicore)\n`Transaksi Dengan:` [{}](tg://user?id={}) `Telah Selesai.`\n**Terima Kasih!**".format(
                     firstname, event.chat_id
                 )
-                await borg.send_message(Config.PRIVATE_GROUP_ID, bruh)
+                await borg.send_message(
+                    entity=Config.PRIVATE_GROUP_ID,
+                    message=bruh,
+                    Link_preview=False,
+                    silent=True,
+                )
                 await asyncio.sleep(3)
                 await event.delete()
-                await bruh.delete(60)
             elif not pmpermit_sql.is_approved(event.chat_id):
                 led = await event.edit(
                     "`Transaksi gagal, Kesalahan Perintah!`"
@@ -188,10 +190,14 @@ if PM_ON_OFF != "DISABLE":
                 bruh = "[TRANSAKSI SELESAI](https://t.me/Archivicore)\n`Transaksi Dengan:` [{}](tg://user?id={}) `Telah Selesai.`\n**Terima Kasih!**".format(
                     firstname, event.chat_id
                 )
-                await borg.send_message(Config.PRIVATE_GROUP_ID, bruh)
+                await borg.send_message(
+                    entity=Config.PRIVATE_GROUP_ID,
+                    message=bruh,
+                    Link_preview=False,
+                    silent=True,
+                )
                 await asyncio.sleep(3)
                 await event.delete()
-                await bruh.delete(60)
             elif not pmpermit_sql.is_approved(reply_s.sender_id):
                 await event.edit("`Transaksi Sedang Tidak Berjalan!`\nketik `.tx` untuk Mulai Transaksi.`")
                 await event.delete(3)
