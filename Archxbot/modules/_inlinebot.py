@@ -261,16 +261,15 @@ if lang == "id":
             await event.answer(sedok, cache_time=0, alert=True)
             return
         await event.get_chat()
-        sender = await event.client(GetFullUserRequest(await event.get_input_chat()))
-        first_name = sender.user.first_name
         him_id = event.query.user_id
         await event.edit("Pilihan Rekber Diterima! ✔️")
-        text3 = "Ok, Anda dapat melakukan Rekber Setelah Kami menyetujui-nya.\nMohon Menunggu, Jangan Spam Atau Coba kirim Apa Pun!."
+        text3 = "Ok, Anda dapat melakukan Rekber Setelah Kami menyetujui-nya.\nMohon Menunggu,\nJangan Spam Atau Coba kirim Apa Pun!."
         await borg.send_message(event.query.user_id, text3)
-        bruh = "[{}](tg://user?id={}) Masuk ke Antrian Rekber baru.".format(
-                    first_name, event.user_id
+        await borg.send_message(
+            LOG_CHAT,
+            message=f"[Pelanggan](tg://user?id={him_id}) Masuk ke Antrian Rekber baru.",
+            buttons=[Button.url("Contact Him", f"tg://user?id={him_id}")],
         )
-        await borg.send_message(LOG_CHAT, bruh)
 
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"bantu")))
     async def rip(event):
