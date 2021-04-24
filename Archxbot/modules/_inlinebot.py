@@ -286,7 +286,7 @@ if lang == "id":
             f"**Layanan Bantuan {DEFAULTUSER}.**\n\n"
             "`Powered by` [Archivicore](https//t.me/ArchivicoreOfficial)",
             buttons=[
-                [Button.inline("Pembelian Produk", "https://tme/Archivicore"),
+                [Button.url("Pembelian Produk", "https://tme/Archivicore"),
                 Button.url("Layanan Pelanggan", "https://t.me/Archivicore")],
                 [Button.url("Source Code", "https://github.com/Archivicore/ArchX-86")],
             ],
@@ -306,8 +306,8 @@ if lang == "id":
             "\n\n`Protected by` [Archivicore](https//t.me/ArchivicoreOfficial)",
             buttons=[
                 [Button.inline("Rekber", data="rekber"),
-                Button.url("Bantuan", "bantu")],
-                [Button.url("SPAM", data="jgnspam")],
+                Button.inline("Bantuan", "bantu")],
+                [Button.inline("SPAM", data="jgnspam")],
             ],
         )
         
