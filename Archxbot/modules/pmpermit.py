@@ -88,7 +88,7 @@ if PM_ON_OFF != "DISABLE":
                         firstname, event.chat_id
                     )
                 )
-                LOG_CHAT = "`TRANSAKSI`\nSedang Tranksaksi Dengan: [{}](tg://user?id={him_id})".format(
+                LOG_CHAT = "`TRANSAKSI`\nSedang Tranksaksi Dengan: [{}](tg://user?id={})".format(
                         firstname, event.chat_id
                 )
                 try:
