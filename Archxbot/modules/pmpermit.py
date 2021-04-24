@@ -83,18 +83,17 @@ if PM_ON_OFF != "DISABLE":
                     await PREV_REPLY_MESSAGE[event.chat_id].delete()
                     del PREV_REPLY_MESSAGE[event.chat_id]
                 pmpermit_sql.approve(event.chat_id, "`Transaksi gagal, Kesalahan Perintah`")
-                bruh = "`Mulai Transaksi Dengan :` [{}](tg://user?id={}) ".format(
-                    first_name, event.chat_id
-                )
-                rko = await borg.send_message(Config.PRIVATE_GROUP_ID, bruh)
                 await event.edit(
                     "`Mulai Transaksi Dengan :` [{}](tg://user?id={})".format(
                         firstname, event.chat_id
                     )
                 )
+                bruh = "`Mulai Transaksi Dengan :` [{}](tg://user?id={}) ".format(
+                    first_name, event.chat_id
+                )
+                await borg.send_message(Config.PRIVATE_GROUP_ID, bruh)
                 await asyncio.sleep(3)
                 await event.delete()
-                await rko.delete(15)
             elif pmpermit_sql.is_approved(event.chat_id):
                 sed = await event.edit("`Transaksi Sedang Berjalan`\nketik `.untx` untuk stop Transaksi.")
                 await asyncio.sleep(3)
