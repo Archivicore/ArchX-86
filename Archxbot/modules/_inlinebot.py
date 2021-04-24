@@ -51,6 +51,7 @@ if lang == "id":
                     [Button.url("Dev ArchX-86", "https://t.me/Archivicore"),
                     Button.url("Join Channel", "https://t.me/ArchivicoreOfficial")],
                 ],
+                link_preview=False,
             )
             await event.answer([result])
         elif event.query.user_id == bot.uid and query.startswith("**Hi"):
@@ -61,7 +62,7 @@ if lang == "id":
                     [custom.Button.inline("Chatting", data="chat"),
                     custom.Button.inline("Transaksi", data="transx"),
                     custom.Button.inline("Mau Spam", data="jgnspam")],
-                    [custom.Button.inline("Welcome To", data="pmklik")],
+                    [custom.Button.inline("Apa ini ?", data="pmklik")],
                 ],
             )
             await event.answer([result])
@@ -87,7 +88,7 @@ if lang == "id":
             buttons = paginate_help(0, CMD_LIST, "helpme")
             await event.edit("Menu Re-opened", buttons=buttons)
         else:
-            reply_pop_up_alert = "This bot ain't for u!!"
+            reply_pop_up_alert = "Silakan pakai bot mu sendiri, dan jangan gunakan punyaku!"
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
     @tgbot.on(
@@ -261,7 +262,10 @@ if lang == "id":
         await event.get_chat()
         him_id = event.query.user_id
         await event.edit(
-            f"Ini adalah Keamanan PM {DEFAULTUSER} untuk Menjauhkan pelaku spam dan dapat Memblokir Otomatis pelaku spam.\n\nProtected by [ArchxSecurity](https//t.me/ArchivicoreOfficial)"
+            f"**Ini adalah Keamanan PM {DEFAULTUSER} untuk Menjauhkan pelaku spam dan dapat Memblokir Otomatis pelaku spam.**"
+            f"\n\nProtected by [ArchxSecurity](https//t.me/ArchivicoreOfficial)",
+            buttons=[Button.inline("Mulai Chat ?", data="chat"),
+                    Button.url("Join Channel", "https://t.me/ArchivicoreOfficial")],
         )
         
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"close")))
