@@ -34,7 +34,7 @@ CUSTOM_MIDDLE_PMP = (
 USER_BOT_WARN_ZERO = "**Anda Telah Mencoba Spamming!!**\nJadi Untuk Menghindari Spam Anda Harus Diblokir Oleh ArchxSecurity."
 
 NAMAORANG = (
-    replied_user await event.client(GetFullUserRequest(await event.get_input_chat()))
+    replied_user = await event.client(GetFullUserRequest(await event.get_input_chat()))
     firstname = replied_user.user.first_name
 )
 
