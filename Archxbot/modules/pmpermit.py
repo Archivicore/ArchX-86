@@ -33,6 +33,8 @@ CUSTOM_MIDDLE_PMP = (
 )
 USER_BOT_WARN_ZERO = "**Anda Telah Mencoba Spamming!!**\nJadi Untuk Menghindari Spam Anda Harus Diblokir Oleh ArchxSecurity."
 
+sender = await event.client(GetFullUserRequest(await event.get_input_chat()))
+namaorang = sender.user.first_name
 USER_BOT_NO_WARN = (
     f"**Hi {namaorang}\n{DEFAULTUSER} Sedang Sibuk Sekarang!**\n"
     f"**Apa Alasan Kamu Mengirim pesan ?**\n"
@@ -239,8 +241,6 @@ if PM_ON_OFF != "DISABLE":
             return
         message_text = event.message.raw_text
         chat_ids = event.sender_id
-        sender = await event.client(GetFullUserRequest(await event.get_input_chat()))
-        namaorang = sender.user.first_name
         if USER_BOT_NO_WARN == message_text:
             return
         # low Level Hacks
