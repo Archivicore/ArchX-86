@@ -256,18 +256,18 @@ if lang == "id":
 
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"rekber")))
     async def rip(event):
-        if event.query.user_id == bot.uid:
+        if event.query.chat_id == bot.uid:
             sedok = "Anda tidak perlu menggunakan ini."
             await event.answer(sedok, cache_time=0, alert=True)
             return
         await event.get_chat()
         replied_user = await event.client(GetFullUserRequest(await event.get_input_chat()))
         first_name = replied_user.user.first_name
-        him_id = event.query.user_id
+        him_id = event.query.chat_id
         await event.edit("Pilihan Rekber Diterima! ✔️")
         text3 = "Ok, Anda dapat melakukan Rekber Setelah Kami menyetujui-nya.\nMohon Menunggu, Jangan Spam Atau Coba kirim Apa Pun!."
-            await borg.send_message(event.query.user_id, text3)
-            bruh = "[{}](tg://user?id={}) Masuk ke Antrian Rekber baru.".format(
+        await borg.send_message(event.query.user_id, text3)
+        bruh = "[{}](tg://user?id={}) Masuk ke Antrian Rekber baru.".format(
                         first_name, event.chat_id
             )
         await borg.send_message(LOG_CHAT, bruh)
