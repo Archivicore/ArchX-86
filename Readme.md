@@ -1,7 +1,7 @@
-# ARHICIVORE-X ARCH-86
+# ARCHBOT-86
 
 <p align="center"><a href="https://t.me/allianceofficial"><img src="https://telegra.ph/file/d85c7eefaeeea3320818f.jpg" width="1000"></a></p> 
-<h1 align="center"><b>ARHICIVORE-X ARCHBOT-86  </b></h1>
+<h1 align="center"><b>ARHICIVORE-X </b></h1>
 <h4 align="center">A Powerful, Smart And Simple Userbot.</h4>
 
 
