@@ -276,7 +276,7 @@ if lang == "id":
             f"**Ini adalah Keamanan Pesan {DEFAULTUSER} untuk Menjauhkan Spam dan Memblokir Otomatis**\n\n`Protected by` [Archivicore]",
             buttons=[
                 [Button.inline("Bantuan", data="bantu"),
-                Button.url("Layanan Pelanggan", "https//telegram.me/ArchivicoreHelpBot?start=bantuan")],
+                Button.inline("Layanan Pelanggan", "https//telegram.me/ArchivicoreHelpBot?start=bantuan")],
             ],
             link_preview=False,
         )
