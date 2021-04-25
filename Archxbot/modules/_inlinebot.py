@@ -386,7 +386,7 @@ if lang == "id":
         await event.get_chat()
         him_id = event.query.user_id
         await event.edit(
-            f"`Kamu Mau Pasang UserBot & Bot Grup Manager ?`\nJika berminat dengan jasa ini, Bisa langsung Hubungi Kontak yang tersedia dan jika ada yang ingin ditanyakan atau tidak mengerti, Kamu juga bisa bertanya pada kontak DIbawah ini ya.\n`Saya siap melayani Anda!`",
+            f"`Jika berminat dengan jasa ini, dan jika ada yang ingin ditanyakan atau tidak mengerti, Kamu bisa Langsung bertanya pada kontak CS Dibawah ya.\n`Saya siap melayani Anda!`",
             f"\n\n**NOTE:\nIni Hanya untuk KAMU yang\nBERMINAT & MEMBUTUHKAN Ya!**\n\n[Customer Service](https://t.me/ArchivicoreAssistantBot?start=help)",
             buttons=[
                 [Button.inline("Order & Payment", data=""),
