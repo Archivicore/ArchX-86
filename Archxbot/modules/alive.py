@@ -40,18 +40,17 @@ def get_readable_time(seconds: int) -> str:
 
 uptime = get_readable_time((time.time() - Lastupdate))
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Unknown"
-PM_IMG = "https://telegra.ph/file/22535f8051a58af113586.jpg"
-pm_caption = "➥ **ARCHX IS:** `ONLINE`\n\n"
-pm_caption += "➥ **SYSTEMS STATS**\n"
-pm_caption += "➥ **Telethon Version:** `1.21.1` \n"
-pm_caption += "➥ **Python:** `3.7.4` \n"
-pm_caption += "➥ **Database Status:**  `Functional`\n"
-pm_caption += "➥ **Current Branch** : `master`\n"
-pm_caption += f"➥ **Version** : `7.5`\n"
-pm_caption += f"➥ **My Boss** : {DEFAULTUSER} \n"
-pm_caption += "➥ **Heroku Database** : `AWS - Working Properly`\n\n"
-pm_caption += "➥ **License** : [GNU General Public License v3.0](github.com/StarkGang/FridayUserbot/blob/master/LICENSE)\n"
-pm_caption += "➥ **Copyright** : By [Starkgang](github.com/StarkGang) and Modified By @SH_AZU\n"
+PM_IMG = "https://telegra.ph/file/d85c7eefaeeea3320818f.jpg"
+pm_caption += "┏━━━━━━━━━━━━━━━━━━━━━━━━\n"
+pm_caption += f"┣[ `Whoami: {DEFAULTUSER}`\n"
+pm_caption += "┣[ `ArchX-86: @Archivicore` \n"
+pm_caption += "┣━━━━━━━━━━━━━━━━━━━━━━━━   \n"
+pm_caption += "┣[ `Python: 3.9.5`\n"
+pm_caption += "┣[ `Telethon Version: 1.21.1` \n"
+pm_caption += "┣━━━━━━━━━━━━━━━━━━━━━━━━ \n"
+pm_caption += f"┣[ **Version** : `{currentversion}`\n"
+pm_caption += "┣[ **Database** : `AWS - Working Properly`\n\n"
+pm_caption += "┗━━━━━━━━━━━━━━━━━━━━━━━━\n"
 
 
 @Archx.on(Archx_on_cmd(pattern=r"alive"))
