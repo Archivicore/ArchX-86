@@ -260,7 +260,6 @@ if lang == "id":
             "\n\n`Protected by` [Archivicore](https//t.me/ArchivicoreOfficial)",
             buttons=[
                 [Button.url("Layanan Pelanggan", "https//t.me/ArchivicoreOfficial"),
-                Button.url("Pembelian Produk", "https//t.me/ArchivicoreOfficial")],
                 [Button.inline("SPAM", data="jgnspam")],
             ],
         )
