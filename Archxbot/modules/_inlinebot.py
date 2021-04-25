@@ -313,7 +313,6 @@ if lang == "id":
             ],
         )
 
-
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"buyer")))
     async def rip(event):
         if event.query.user_id == bot.uid:
@@ -329,7 +328,6 @@ if lang == "id":
             LOG_CHAT,
             message=f"[#Pelanggan](tg://user?id={him_id}) Memilih role sebagai Pembeli.",
         )
-
 
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"seller")))
     async def rip(event):
@@ -347,7 +345,6 @@ if lang == "id":
             message=f"[#Pelanggan](tg://user?id={him_id}) Memilih role sebagai Penjual.",
         )
 
-
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"ubot")))
     async def rip(event):
         if event.query.user_id == bot.uid:
@@ -363,14 +360,13 @@ if lang == "id":
             "\n- DEPLOY USERBOT & U-DYNOS",
             "\n- PEMASANGAN BOT MANAGER GRUP",
             "\n\nREPO YANG TERSERDIA: Lihat [Di sini](https://t.me/ArchivicoreAssistantBot?start=help)",
-            "\n\nQ&A: [Baca Disini yuk](https://t.me/ArchivicoreAssistantBot?start=help)",
-            "\n\nDengan Tekan Tombol Pasang Sekarang Dibawah: ",
+            "\nQ&A: [Baca Disini yuk](https://t.me/ArchivicoreAssistantBot?start=help)",
+            "\nDengan Tekan Tombol Pasang Sekarang Dibawah: ",
             buttons=[
                 [Button.inline("Pasang Sekarang", data="cs")],
                 [Button.inline("Batalkan", data="bantu")],
             ],
         )
-
 
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"cs")))
     async def rip(event):
@@ -390,12 +386,10 @@ if lang == "id":
             "DIbawah ini ya.",
             "\n`Saya siap melayani Anda!`",
             "\n\n**NOTE:\nIni Hanya untuk KAMU yang\nBERMINAT & MEMBUTUHKAN Ya!**",
-            "\nYuk langsung Tanyain aja",
             "\nCustomer Service : [Archivicore](https://t.me/Archivicore)",
             "\nOrder & Payment : [Archivicore](https://t.me/Archivicore)",
             buttons=[Button.inline("Kembali", data="bantu")],
         )
-
 
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"close")))
     async def on_plug_in_callback_query_handler(event):
