@@ -257,9 +257,7 @@ if lang == "id":
         him_id = event.query.user_id
         await event.edit(
             f"**Ini adalah Keamanan Pesan {DEFAULTUSER} untuk Menjauhkan Spam dan Memblokir Otomatis**"
-            "\n\n`Protected by` [Archivicore](https//t.me/ArchivicoreOfficial)")
-        await borg.send_message(
-            entity=event.query.user_id,
+            f"\n\n`Protected by` [Archivicore](https//t.me/ArchivicoreOfficial)"
             buttons=[Button.url("Layanan Pelanggan", "https//t.me/ArchivicoreOfficial"),
                     Button.inline("SPAM", data="jgnspam")],
             link_preview=False,
