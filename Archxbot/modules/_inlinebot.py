@@ -290,7 +290,7 @@ if lang == "id":
         await event.get_chat()
         him_id = event.query.user_id
         await event.edit(
-            f"**Membeli Produk Degan: {DEFAULTUSER}\nSilahkan Kamu Pilih Produk yang Tersedia**\n**Cek Produk** [Klik Disini](https://t.me/ArchivicoreHelpBot?start=Produk)\n\n`Protected by` [Archivicore]"
+            f"**Membeli Produk Degan: {DEFAULTUSER}\nSilahkan Kamu Pilih Produk yang Tersedia**\n**Cek Produk** [Klik Disini](https://t.me/ArchivicoreHelpBot?start=Produk)\n\n`Protected by` [Archivicore]",
             buttons=[
                 [Button.inline("Transaksi", data="transx"),
                 Button.inline("Kembali", data="bantu")],
