@@ -294,7 +294,7 @@ if lang == "id":
             buttons=[
                 [Button.inline("Transaksi", data="transx"),
                 Button.inline("Kembali", data="bantu")],
-            ]
+            ],
         )
 
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"close")))
