@@ -276,7 +276,7 @@ if lang == "id":
             buttons=[
                 [Button.inline("Mulai Chat", data="chat"),
                 Button.inline("ArBer", data="arber"),
-                Button.inline("Pembelian Produk", data="buying")],
+                Button.inline("Produk", data="buying")],
                 [Button.inline("Kembali", data="bantu")],
             ],
         )
@@ -309,7 +309,7 @@ if lang == "id":
         await event.edit(
             f"**Kamu bisa Membeli Produk Degan Saya.**\n`Silahkan Kamu Pilih Produk yang Tersedia` [Di sini](https://t.me/ArchivicoreAssistantBot?start=help)\n\n",
             buttons=[
-                [Button.inline("Kembali", data="bantu")],
+                [Button.inline("Kembali", data="transx")],
             ],
         )
 
@@ -371,10 +371,10 @@ if lang == "id":
         him_id = event.query.user_id
         await event.edit(
             f"`Kamu Mau Pasang UserBot & Bot Grup Manager ?`\nJika berminat dengan jasa ini, Bisa langsung Hubungi Kontak yang tersedia dan jika ada yang ingin ditanyakan atau tidak mengerti, Kamu juga bisa bertanya pada kontak DIbawah ini ya.\n`Saya siap melayani Anda!`",
-            f"\n\n**NOTE:\nIni Hanya untuk KAMU yang\nBERMINAT & MEMBUTUHKAN Ya!**\nCustomer Service : [Archivicore](https://t.me/ArchivicoreAssistantBot?start=help)",
+            f"\n\n**NOTE:\nIni Hanya untuk KAMU yang\nBERMINAT & MEMBUTUHKAN Ya!**\n\n[Customer Service](https://t.me/ArchivicoreAssistantBot?start=help)",
             buttons=[
                 [Button.inline("Order & Payment", data="chat"),
-                Button.inline("Kembali", data="bantu")],
+                Button.inline("Kembali", data="ubot")],
             ],
         )
 
