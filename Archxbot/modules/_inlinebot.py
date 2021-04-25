@@ -259,7 +259,24 @@ if lang == "id":
             f"**Ini adalah Keamanan Pesan {DEFAULTUSER} untuk Menjauhkan Spam dan Memblokir Otomatis**\n\n`Protected by` [Archivicore]",
             buttons=[
                 [Button.inline("SPAM", data="jgnspam"),
-                Button.url("Layanan Pelanggan", "https//t.me/ArchivicoreOfficial")],
+                Button.inline("Layanan Pelanggan", data="lapen")],
+            ],
+            link_preview=False,
+        )
+
+    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"lapen")))
+    async def rip(event):
+        if event.query.user_id == bot.uid:
+            sedok = "Anda tidak perlu menggunakan ini."
+            await event.answer(sedok, cache_time=0, alert=True)
+            return
+        await event.get_chat()
+        him_id = event.query.user_id
+        await event.edit(
+            f"**Ini adalah Keamanan Pesan {DEFAULTUSER} untuk Menjauhkan Spam dan Memblokir Otomatis**\n\n`Protected by` [Archivicore]",
+            buttons=[
+                [Button.inline("Bantuan", data="bantu"),
+                Button.url("Layanan Pelanggan", "https//telegram.me/ArchivicoreHelpBot?start=bantuan")],
             ],
             link_preview=False,
         )
