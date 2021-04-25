@@ -354,7 +354,7 @@ if lang == "id":
         await event.get_chat()
         him_id = event.query.user_id
         await event.edit(
-            f"**Solusi nih, DIbaca ya !\nMELAYANI JASA:\nDEPLOY USERBOT & U-DYNOS\nPEMASANGAN BOT MANAGER GRUP\n\nQ&A: [Baca Disini yuk](https://t.me/ArchivicoreAssistantBot?start=help)\nDengan Tekan Tombol Pasang Sekarang Dibawah:**",
+            f"**Solusi nih, Dibaca ya !\nMELAYANI JASA:\nDEPLOY USERBOT & U-DYNOS\nPEMASANGAN BOT MANAGER GRUP**\n\n`Q&A:` [Baca Disini yuk](https://t.me/ArchivicoreAssistantBot?start=help)\n**Dengan Tekan Tombol Pasang Sekarang Dibawah:**",
             buttons=[
                 [Button.inline("Pasang Sekarang", data="cs")],
                 [Button.inline("Batalkan", data="bantu")],
