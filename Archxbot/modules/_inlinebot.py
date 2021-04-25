@@ -294,7 +294,7 @@ if lang == "id":
             buttons=[
                 [Button.inline("Pembeli", data="buyer"),
                 Button.inline("Penjual", data="seller")],
-                [Button.inline("Batalkan", data="batal")],
+                [Button.inline("Batalkan", data="bantu")],
             ],
         )
 
@@ -345,6 +345,55 @@ if lang == "id":
         await borg.send_message(
             LOG_CHAT,
             message=f"[#Pelanggan](tg://user?id={him_id}) Memilih role sebagai Penjual.",
+        )
+
+
+    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"ubot")))
+    async def rip(event):
+        if event.query.user_id == bot.uid:
+            sedok = "Anda tidak perlu menggunakan ini."
+            await event.answer(sedok, cache_time=0, alert=True)
+            return
+        await event.get_chat()
+        him_id = event.query.user_id
+        await event.edit(
+            "`Kamu Mau Pasang UserBot ini ?`",
+            "\n**Solusi nih, DIbaca ya !**",
+            "\n\nMELAYANI JASA:",
+            "\n- DEPLOY USERBOT & U-DYNOS",
+            "\n- PEMASANGAN BOT MANAGER GRUP",
+            "\n\nREPO YANG TERSERDIA: Lihat [Di sini](https://t.me/ArchivicoreAssistantBot?start=help)",
+            "\n\nQ&A: [Baca Disini yuk](https://t.me/ArchivicoreAssistantBot?start=help)",
+            "\n\nDengan Tekan Tombol Pasang Sekarang Dibawah: ",
+            buttons=[
+                [Button.inline("Pasang Sekarang", data="cs")],
+                [Button.inline("Batalkan", data="bantu")],
+            ],
+        )
+
+
+    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"cs")))
+    async def rip(event):
+        if event.query.user_id == bot.uid:
+            sedok = "Anda tidak perlu menggunakan ini."
+            await event.answer(sedok, cache_time=0, alert=True)
+            return
+        await event.get_chat()
+        him_id = event.query.user_id
+        await event.edit(
+            "`Kamu Mau Pasang UserBot & Bot Grup Manager ?`",
+            "\nJika berminat dengan jasa ini,",
+            "Bisa langsung Hubungi Kontak yang tersedia",
+            "dan jika ada yang ingin ditanyakan",
+            "atau tidak mengerti,",
+            "Kamu juga bisa bertanya pada kontak",
+            "DIbawah ini ya.",
+            "\n`Saya siap melayani Anda!`",
+            "\n\n**NOTE:\nIni Hanya untuk KAMU yang\nBERMINAT & MEMBUTUHKAN Ya!**",
+            "\nYuk langsung Tanyain aja",
+            "\nCustomer Service : [Archivicore](https://t.me/Archivicore)",
+            "\nOrder & Payment : [Archivicore](https://t.me/Archivicore)",
+            buttons=[Button.inline("Kembali", data="bantu")],
         )
 
 
