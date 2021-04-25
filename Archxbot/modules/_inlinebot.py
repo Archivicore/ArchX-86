@@ -389,7 +389,7 @@ if lang == "id":
             f"`Jika berminat dengan jasa ini, dan jika ada yang ingin ditanyakan atau tidak mengerti, Kamu bisa Langsung bertanya pada kontak CS Dibawah ya.\n`Saya siap melayani Anda!`",
             f"\n\n**NOTE:\nIni Hanya untuk KAMU yang\nBERMINAT & MEMBUTUHKAN Ya!**\n\n[Customer Service](https://t.me/ArchivicoreAssistantBot?start=help)",
             buttons=[
-                [Button.inline("Order & Payment", data=""),
+                [Button.inline("Order & Payment", data="bubot"),
                 Button.inline("Kembali", data="ubot")],
             ],
         )
