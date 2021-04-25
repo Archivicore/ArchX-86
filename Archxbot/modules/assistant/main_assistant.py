@@ -47,7 +47,7 @@ async def start(event):
     hmmwow = devlop.first_name
     vent = event.chat_id
     mypic = Config.ASSISTANT_START_PIC
-    starttext = f"Hi, {firstname}! Aku Adalah {bot_id}, Assistant Bot. \n\nSaya Dikelola oleh [{hmmwow}](tg://user?id={bot.uid}) \nKamu Dapat Mengirim Pesan ke Creator Saya Menggunakan Bot Ini. \n\nJika Kamu Ingin Asistant Seperti ini, Kamu Dapat Tekan Tombol Di Bawah Ini."
+    starttext = f"Hi, {firstname}! Aku Adalah {bot_id}.\nSaya Dikelola oleh [{hmmwow}](tg://user?id={bot.uid}) \nKamu Dapat Mengirim Pesan ke Creator Saya Menggunakan Bot Ini. \n\nJika Kamu Ingin Asistant Seperti ini, Kamu Dapat Tekan Tombol Di Bawah Ini."
     if event.sender_id == bot.uid:
         await tgbot.send_message(
             vent,
