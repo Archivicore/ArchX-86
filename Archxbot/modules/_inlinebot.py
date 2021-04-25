@@ -207,7 +207,7 @@ if lang == "id":
         await borg(functions.contacts.BlockRequest(event.query.user_id))
         await borg.send_message(
             LOG_CHAT,
-            f"**Spammer Detect!.**\n[Client](tg://user?id={him_id}) Mencoba Untuk Mengirim Spam diPM.",
+            f"**Spammer Detect!.**\n[Client](tg://user?id={him_id}) `Mencoba Untuk Mengirim Spam diPM.`",
         )
 
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"backme")))
@@ -231,7 +231,7 @@ if lang == "id":
         await event.get_chat()
         him_id = event.query.user_id
         await event.edit("Alasan Chatting Diterima! ✔️")
-        text2 = "Mohon Tunggu Sampai Saya Menyetujui.\nJangan Spam Atau Coba kirim Apa Pun!.\nTerima kasih telah menghubungi saya."
+        text2 = "`Mohon Tunggu Sampai Saya Menyetujui.\nJangan Spam Atau Coba kirim Apa Pun!.\nTerima kasih telah menghubungi saya.`"
         await borg.send_message(event.query.user_id, text2)
         await borg.send_message(
             LOG_CHAT,
@@ -307,7 +307,7 @@ if lang == "id":
         await event.get_chat()
         him_id = event.query.user_id
         await event.edit(
-            f"**Membeli Produk Degan Aman Di:\n{DEFAULTUSER}\n\nSilahkan Kamu Pilih Produk yang Tersedia [Di sini](https://t.me/ArchivicoreHelpBot?start=Produk)\n\n",
+            f"**Kamu bisa Membeli Produk Degan Aman Di:**\n{DEFAULTUSER}\n\n`Silahkan Kamu Pilih Produk yang Tersedia` [Di sini](https://t.me/ArchivicoreHelpBot?start=Produk)\n\n",
             buttons=[
                 [Button.inline("Kembali", data="bantu")],
             ],
@@ -354,13 +354,7 @@ if lang == "id":
         await event.get_chat()
         him_id = event.query.user_id
         await event.edit(
-            f"**Solusi nih, DIbaca ya !**",
-            "\nMELAYANI JASA:",
-            "\nDEPLOY USERBOT & U-DYNOS",
-            "\nPEMASANGAN BOT MANAGER GRUP",
-            "\nREPO YANG TERSERDIA: Lihat [Di sini](https://t.me/ArchivicoreAssistantBot?start=help)",
-            "\nQ&A: [Baca Disini yuk](https://t.me/ArchivicoreAssistantBot?start=help)",
-            "\nDengan Tekan Tombol Pasang Sekarang Dibawah: ",
+            f"**Solusi nih, DIbaca ya !**\nMELAYANI JASA:\nDEPLOY USERBOT & U-DYNOS\nPEMASANGAN BOT MANAGER GRUP\nnQ&A: [Baca Disini yuk](https://t.me/ArchivicoreAssistantBot?start=help)\nDengan Tekan Tombol Pasang Sekarang Dibawah:",
             buttons=[
                 [Button.inline("Pasang Sekarang", data="cs")],
                 [Button.inline("Batalkan", data="bantu")],
