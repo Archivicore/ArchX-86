@@ -235,7 +235,7 @@ if lang == "id":
         await borg.send_message(event.query.user_id, text2)
         await borg.send_message(
             LOG_CHAT,
-            message=f"[#Pelanggan](tg://user?id={him_id}) Ingin Chatting sesuatu di PM.",
+            message=f"[#Pelanggan](tg://user?id={him_id}) `Mengirim Pesan Masuk Baru.`",
         )
 
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"ttgku")))
@@ -326,7 +326,7 @@ if lang == "id":
         await borg.send_message(event.query.user_id, text2)
         await borg.send_message(
             LOG_CHAT,
-            message=f"[#Pelanggan](tg://user?id={him_id}) Memilih role sebagai Pembeli.",
+            message=f"[#Pelanggan](tg://user?id={him_id}) `Memilih role sebagai Pembeli.`",
         )
 
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"seller")))
@@ -342,7 +342,7 @@ if lang == "id":
         await borg.send_message(event.query.user_id, text2)
         await borg.send_message(
             LOG_CHAT,
-            message=f"[#Pelanggan](tg://user?id={him_id}) Memilih role sebagai Penjual.",
+            message=f"[#Pelanggan](tg://user?id={him_id}) `Memilih role sebagai Penjual.`",
         )
 
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"ubot")))
@@ -361,6 +361,22 @@ if lang == "id":
             ],
         )
 
+    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"bubot")))
+    async def rip(event):
+        if event.query.user_id == bot.uid:
+            sedok = "Anda tidak perlu menggunakan ini."
+            await event.answer(sedok, cache_time=0, alert=True)
+            return
+        await event.get_chat()
+        him_id = event.query.user_id
+        await event.edit("Order & Payment Diterima! ✔️")
+        text2 = "`Mohon Tunggu Sampai Saya Menyetujui.\nJangan Spam Atau Coba kirim Apa Pun!.\nTerima kasih.`"
+        await borg.send_message(event.query.user_id, text2)
+        await borg.send_message(
+            LOG_CHAT,
+            message=f"[#Pelanggan](tg://user?id={him_id}) `Melakukan Order & Payment.`",
+        )
+
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"cs")))
     async def rip(event):
         if event.query.user_id == bot.uid:
@@ -373,7 +389,7 @@ if lang == "id":
             f"`Kamu Mau Pasang UserBot & Bot Grup Manager ?`\nJika berminat dengan jasa ini, Bisa langsung Hubungi Kontak yang tersedia dan jika ada yang ingin ditanyakan atau tidak mengerti, Kamu juga bisa bertanya pada kontak DIbawah ini ya.\n`Saya siap melayani Anda!`",
             f"\n\n**NOTE:\nIni Hanya untuk KAMU yang\nBERMINAT & MEMBUTUHKAN Ya!**\n\n[Customer Service](https://t.me/ArchivicoreAssistantBot?start=help)",
             buttons=[
-                [Button.inline("Order & Payment", data="chat"),
+                [Button.inline("Order & Payment", data=""),
                 Button.inline("Kembali", data="ubot")],
             ],
         )

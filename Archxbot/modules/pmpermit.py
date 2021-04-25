@@ -29,16 +29,16 @@ DEFAULTUSER = (
     str(ALIVE_NAME) if ALIVE_NAME else "periksa vars ALIVE_NAME"
 )
 CUSTOM_MIDDLE_PMP = (
-    str(CUSTOM_PMPERMIT) if CUSTOM_PMPERMIT else f"Jangan mengirim spam di sini ya! ❤️"
+    str(CUSTOM_PMPERMIT) if CUSTOM_PMPERMIT else f"Jangan mengirim Spam di sini ya! ❤️"
 )
-USER_BOT_WARN_ZERO = "**Anda Telah Mencoba Spamming!!**\nJadi Untuk Menghindari Spam Anda Harus Diblokir Oleh ArchxSecurity."
+USER_BOT_WARN_ZERO = "**Anda Telah Mencoba Spamming!!**\nJadi Untuk Menghindari Spam,\nAnda Harus Diblokir Sementara Oleh ArchivicoreAssistant."
 
 USER_BOT_NO_WARN = (
     f"**Hi, **\n"
     f"`{DEFAULTUSER}` **Sedang Sibuk Sekarang!**\n"
     f"`{CUSTOM_MIDDLE_PMP}`\n\n"
-    f"**Apa Alasan Kamu Mengirim pesan ?**\n"
-    f"**Silahkan Kamu Tekan Tombol Dibawah ini.**\n\n"
+    f"`Jika Kamu ingin mengirim pesan,\n"
+    f"`Silahkan Tekan Tombol Mulai Chat Dibawah:**`\n\n"
 )
 if PM_ON_OFF != "DISABLE":
 
