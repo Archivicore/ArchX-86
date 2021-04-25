@@ -60,7 +60,7 @@ if lang == "id":
                 text=query,
                 buttons=[
                     [custom.Button.inline("Mulai Chat", data="chat"),
-                    custom.Button.inline("Tentang-ku", data="ttgku"),
+                    custom.Button.inline("Apa ini ?", data="ttgku"),
                     custom.Button.inline("Bantuan", data="bantu")],
                     [custom.Button.url("Join Channel", "https://t.me/ArchivicoreOfficial")],
                 ],
@@ -241,10 +241,10 @@ if lang == "id":
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"ttgku")))
     async def rip(event):
         if event.query.user_id == bot.uid:
-            text = f"Ini adalah Keamanan Pesan\nProtected by @ArchivicoreAssistantBot"
+            text = f"Ini adalah Keamanan Pesan Masuk\nUntuk Menjauhkan Spam dan Memblokir Otomatis\nProtected by @ArchivicoreAssistantBot"
             await event.answer(text, alert=True)
         else:
-            txt = f"Ini adalah Keamanan PM {DEFAULTUSER}\nProtected by @ArchivicoreAssistantBot"
+            txt = f"Ini adalah Keamanan Pesan Masuk\nUntuk Menjauhkan Spam dan Memblokir Otomatis\nProtected by @ArchivicoreAssistantBot"
             await event.answer(txt, alert=True)
 
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"bantu")))
@@ -256,15 +256,16 @@ if lang == "id":
         await event.get_chat()
         him_id = event.query.user_id
         await event.edit(
-            f"**Ini adalah Keamanan Pesan {DEFAULTUSER} untuk Menjauhkan Spam dan Memblokir Otomatis**\n\n`Protected by` [Archivicore]",
+            f"**Layanan Bantuan Pelanggan**\n`Protected by` [Archivicore]",
             buttons=[
-                [Button.inline("Mulai Chat", data="chat"),
-                Button.inline("Layanan Pelanggan", data="lapen")],
+                [Button.inline("Transaksi", data="transx"),
+                Button.inline("Pembelian Produk", data="buying"),
+                Button.inline("Mau Pasang uBot", data="ubot")],
             ],
             link_preview=False,
         )
 
-    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"lapen2")))
+    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"transx")))
     async def rip(event):
         if event.query.user_id == bot.uid:
             sedok = "Anda tidak perlu menggunakan ini."
@@ -273,15 +274,14 @@ if lang == "id":
         await event.get_chat()
         him_id = event.query.user_id
         await event.edit(
-            f"**Ini adalah Keamanan Pesan {DEFAULTUSER} untuk Menjauhkan Spam dan Memblokir Otomatis**\n\n`Protected by` [Archivicore]",
+            f"**Cara Transaksi Dengan {DEFAULTUSER}:\nKamu Tekan Tombol Mulai Chat\nTanyakan Stok Barang\nTransfer Sesuai Rekening & Nominal Harga\nKirim Bukti Transfer\nTunggu Konfirmasi dari Saya\nDan Pesananmu Akan Dikirim.**\n\n`Protected by` [Archivicore]",
             buttons=[
-                [Button.inline("Back", data="bantu"),
-                Button.inline("SPAM", data="jgnspam")],
+                [Button.inline("Cek & Membeli Produk", data="buying"),
+                Button.inline("Kembali", data="bantu")],
             ],
             link_preview=False,
         )
-
-    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"lapen")))
+    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"buying")))
     async def rip(event):
         if event.query.user_id == bot.uid:
             sedok = "Anda tidak perlu menggunakan ini."
@@ -289,16 +289,12 @@ if lang == "id":
             return
         await event.get_chat()
         him_id = event.query.user_id
-        await event.edit(f"**Ini adalah Keamanan Pesan {DEFAULTUSER} untuk Menjauhkan Spam dan Memblokir Otomatis**\n\n`Protected by` [Archivicore]")
-        text2 = "Layanan Bantuan Archivicore"
-        await borg.send_message(
-            event.query.user_id,
-            text2,
+        await event.edit(
+            f"**Membeli Produk Degan: {DEFAULTUSER}\nSilahkan Kamu Pilih Produk yang Tersedia**\n**Cek Produk** [Klik Disini](https://t.me/ArchivicoreHelpBot?start=Produk)\n\n`Protected by` [Archivicore]"
             buttons=[
-                [Button.inline("Layanan Pelanggan", data="lapen2"),
-                Button.url("Transaksi Bot", "https://t.me/ArchivicoreAssistantBot?start=help")],
-                [Button.inline("Kembali", data="bantu")],
-            ],
+                [Button.inline("Transaksi", data="transx"),
+                Button.inline("Kembali", data="bantu")],
+            ]
         )
 
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"close")))
