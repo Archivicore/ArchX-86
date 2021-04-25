@@ -256,8 +256,7 @@ if lang == "id":
         await event.get_chat()
         him_id = event.query.user_id
         await event.edit(
-            f"**Ini adalah Keamanan Pesan {DEFAULTUSER} untuk Menjauhkan Spam dan Memblokir Otomatis**"
-            f"\n\n`Protected by` [Archivicore](https//t.me/ArchivicoreOfficial)"
+            "**Ini adalah Keamanan Pesan {DEFAULTUSER} untuk Menjauhkan Spam dan Memblokir Otomatis**\n\n`Protected by` [Archivicore](https//t.me/ArchivicoreOfficial)",
             buttons=[Button.url("Layanan Pelanggan", "https//t.me/ArchivicoreOfficial"),
                     Button.inline("SPAM", data="jgnspam")],
             link_preview=False,
