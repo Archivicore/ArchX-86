@@ -17,7 +17,7 @@ from Archxbot.modules import currentversion
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Unknown"
 PM_IMG = "https://telegra.ph/file/d85c7eefaeeea3320818f.jpg"
-pm_caption = "**ASSISTANT IS:** [ONLINE](https://t.me/ArchivicoreAssistantBot)\n\n"
+pm_caption = "**ASSISTANT IS:** [ONLINE](https://t.me/ArchivicoreAssistantBot)\n"
 pm_caption += "┏━━━━━━━━━━━━━━━━━━━━━━━━\n"
 pm_caption += f"┣[ `Whoami: {DEFAULTUSER}`\n"
 pm_caption += "┣[ `ArchX-86: @Archivicore`\n"
