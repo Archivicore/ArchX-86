@@ -37,8 +37,8 @@ USER_BOT_NO_WARN = (
     f"**Hi, **\n"
     f"`{DEFAULTUSER}` **Sedang Sibuk Sekarang!**\n"
     f"`{CUSTOM_MIDDLE_PMP}`\n\n"
-    f"`Jika Kamu ingin mengirim pesan,\n"
-    f"`Silahkan Tekan Tombol Mulai Chat Dibawah:**`\n\n"
+    f"`Jika Kamu ingin mengirim pesan,`\n"
+    f"`Silahkan Tekan Tombol Mulai Chat Dibawah:`\n\n"
 )
 if PM_ON_OFF != "DISABLE":
 
