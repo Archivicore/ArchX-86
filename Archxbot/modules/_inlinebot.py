@@ -354,8 +354,8 @@ if lang == "id":
         await event.get_chat()
         him_id = event.query.user_id
         await event.edit(
-            "**Solusi nih, DIbaca ya !**",
-            "\n\nMELAYANI JASA:",
+            f"**Solusi nih, DIbaca ya !**",
+            "\nMELAYANI JASA:",
             "\nDEPLOY USERBOT & U-DYNOS",
             "\nPEMASANGAN BOT MANAGER GRUP",
             "\nREPO YANG TERSERDIA: Lihat [Di sini](https://t.me/ArchivicoreAssistantBot?start=help)",
@@ -376,7 +376,7 @@ if lang == "id":
         await event.get_chat()
         him_id = event.query.user_id
         await event.edit(
-            "`Kamu Mau Pasang UserBot & Bot Grup Manager ?`",
+            f"`Kamu Mau Pasang UserBot & Bot Grup Manager ?`",
             "\nJika berminat dengan jasa ini, Bisa langsung Hubungi Kontak yang tersedia dan jika ada yang ingin ditanyakan atau tidak mengerti, Kamu juga bisa bertanya pada kontak DIbawah ini ya.",
             "\n`Saya siap melayani Anda!`",
             "\n\n**NOTE:\nIni Hanya untuk KAMU yang\nBERMINAT & MEMBUTUHKAN Ya!**",
