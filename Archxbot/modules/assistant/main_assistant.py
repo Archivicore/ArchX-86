@@ -47,17 +47,17 @@ async def start(event):
     hmmwow = devlop.first_name
     vent = event.chat_id
     mypic = Config.ASSISTANT_START_PIC
-    starttext = f"Hello, {firstname} ! Nice To Meet You, Well I Am {bot_id}, An Powerfull Assistant Bot. \n\nMy Master [{hmmwow}](tg://user?id={bot.uid}) \nYou Can Talk/Contact My Master Using This Bot. \n\nIf You Want Your Own Assistant You Can Deploy From Button Below. \n\nPowered By [Archxbot](t.me/ArchivicoreOfficial)"
+    starttext = f"Hi, {firstname}! Aku Adalah {bot_id}, Assistant Bot. \n\nSaya Dikelola oleh [{hmmwow}](tg://user?id={bot.uid}) \nKamu Dapat Mengirim Pesan ke Creator Saya Menggunakan Bot Ini. \n\nJika Kamu Ingin Asistant Seperti ini, Kamu Dapat Tekan Tombol Di Bawah Ini."
     if event.sender_id == bot.uid:
         await tgbot.send_message(
             vent,
-            message=f"Hi Master, It's Me {bot_id}, Your Assistant ! \nWhat You Wanna Do today ?",
+            message=f"Hi Creator, Ini Aku {bot_id}, Assistant Mu ! \nApa yang Kamu ingin Hari ini ?",
             buttons=[
-                [custom.Button.inline("Show Users 🔥", data="users")],
-                [custom.Button.inline("Commands For Assistant", data="gibcmd")],
+                [custom.Button.inline("Tampilkan User", data="users")],
+                [custom.Button.inline("Perintah untuk Assistant", data="gibcmd")],
                 [
                     Button.url(
-                        "Add Me to Group 👥", f"t.me/{bot_username}?startgroup=true"
+                        "Tambahkan Aku Ke Grup", f"t.me/{bot_username}?startgroup=true"
                     )
                 ],
             ],
@@ -73,8 +73,8 @@ async def start(event):
             caption=starttext,
             link_preview=False,
             buttons=[
-                [custom.Button.inline("Deploy your Archxbot", data="deploy")],
-                [Button.url("Contact Dev ❓", "t.me/Archivicore")],
+                [custom.Button.inline("Deploy ArchX-86", data="deploy")],
+                [Button.url("Chat Creator", "t.me/Archivicore")],
             ],
         )
         if os.path.exists(mypic):
@@ -90,10 +90,10 @@ async def help(event):
     if event.query.user_id is not bot.uid:
         await tgbot.send_message(
             event.chat_id,
-            message="You Can Deploy Archxbot In Heroku By Following Steps Bellow, You Can See Some Quick Guides On Support Channel Or On Your Own Assistant Bot. \nThank You For Contacting Me.",
+            message="Kamu Dapat Memasang ArchX-86 Dengan Mengikuti Cara Di Bawah Ini. \nTerima kasih telah menghubungi saya.",
             buttons=[
-                [Button.url("Deploy Tutorial 📺", "https://t.me/ArchivicoreOfficial")],
-                [Button.url("Github Repo ❓", "https://t.me/Archivicore")],
+                [Button.url("Deploy", "https://t.me/Archivicore")],
+                [Button.url("Repositories", "https://t.me/Archivicore")],
             ],
         )
 
@@ -138,7 +138,7 @@ async def all_messages_catcher(event):
             )
         except telethon.errors.rpcerrorlist.UserNotParticipantError:
             await event.reply(
-                f"**Opps, I Couldn't Forward That Message To Owner. Please Join My Channel First And Then Try Again!**",
+                f"**Opps,Aku Tidak Bisa Meneruskan Pesan Itu Ke Pemilik. Silakan Gabung Channel Ku Dulu Lalu Coba Lagi!**",
                 buttons=[Button.url("Join Channel ", Config.JTM_CHANNEL_USERNAME)],
             )
             return
