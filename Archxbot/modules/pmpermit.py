@@ -29,7 +29,7 @@ DEFAULTUSER = (
     str(ALIVE_NAME) if ALIVE_NAME else "periksa vars ALIVE_NAME"
 )
 CUSTOM_MIDDLE_PMP = (
-    str(CUSTOM_PMPERMIT) if CUSTOM_PMPERMIT else f"Jangan mengirim Spam di sini ya! ❤️"
+    str(CUSTOM_PMPERMIT) if CUSTOM_PMPERMIT else f"Jangan mengirim spam di sini ya! ❤️"
 )
 USER_BOT_WARN_ZERO = "**Anda Telah Mencoba Spamming!!**\nJadi Untuk Menghindari Spam Anda Harus Diblokir Oleh ArchxSecurity."
 
@@ -62,7 +62,7 @@ if PM_ON_OFF != "DISABLE":
         if not pmpermit_sql.is_approved(event.chat_id):
             if not event.chat_id in PM_WARNS:
                 pmpermit_sql.approve(event.chat_id, "outgoing")
-                bruh = "#Auto Approved User\n[{}](tg://user?id={}) !".format(
+                bruh = "#Auto `Approved User`\n[{}](tg://user?id={}) !".format(
                     first_name, event.chat_id
                 )
                 rko = await borg.send_message(event.chat_id, bruh)
@@ -84,16 +84,21 @@ if PM_ON_OFF != "DISABLE":
                 if event.chat_id in PREV_REPLY_MESSAGE:
                     await PREV_REPLY_MESSAGE[event.chat_id].delete()
                     del PREV_REPLY_MESSAGE[event.chat_id]
-                pmpermit_sql.approve(event.chat_id, "❌ `Transaksi gagal, Kesalahan Perintah!`")
+                pmpermit_sql.approve(event.chat_id, "`Transaksi gagal, Kesalahan Perintah!`")
                 await event.edit(
-                    "`Sedang Transaksi Dengan:` [{}](tg://user?id={})".format(
+                    "`Memulai Transaksi Dengan:` [{}](tg://user?id={})".format(
                         firstname, event.chat_id
                     )
                 )
-                bruh = "[#TRANSAKSI](https://t.me/Archivicore)\n`Sedang Transaksi Dengan:` [{}](tg://user?id={})".format(
+                bruh = "`Sedang Transaksi Dengan:` [{}](tg://user?id={})".format(
                     firstname, event.chat_id
                 )
-                await borg.send_message(Config.PRIVATE_GROUP_ID, bruh)
+                await borg.send_message(
+                    entity=Config.PRIVATE_GROUP_ID,
+                    message=bruh,
+                    link_preview=False,
+                    silent=True,
+                )
                 await asyncio.sleep(3)
                 await event.delete()
             elif pmpermit_sql.is_approved(event.chat_id):
@@ -108,16 +113,21 @@ if PM_ON_OFF != "DISABLE":
             if not pmpermit_sql.is_approved(reply_s.sender_id):
                 replied_user = await event.client(GetFullUserRequest(reply_s.sender_id))
                 firstname = replied_user.user.first_name
-                pmpermit_sql.approve(reply_s.sender_id, "❌ `Transaksi gagal, Kesalahan Perintah!`")
+                pmpermit_sql.approve(reply_s.sender_id, "`Transaksi gagal, Kesalahan Perintah!`")
                 await event.edit(
-                    "`Sedang Transaksi Dengan:` [{}](tg://user?id={})".format(
+                    "`Memulai Transaksi Dengan:` [{}](tg://user?id={})".format(
                         firstname, reply_s.sender_id
                     )
                 )
-                bruh = "[#TRANSAKSI](https://t.me/Archivicore)\n`Sedang Transaksi Dengan:` [{}](tg://user?id={})".format(
+                bruh = "`Sedang Transaksi Dengan:` [{}](tg://user?id={})".format(
                     firstname, event.chat_id
                 )
-                await borg.send_message(Config.PRIVATE_GROUP_ID, bruh)
+                await borg.send_message(
+                    entity=Config.PRIVATE_GROUP_ID,
+                    message=bruh,
+                    link_preview=False,
+                    silent=True,
+                )
                 await asyncio.sleep(3)
                 await event.delete()
             elif pmpermit_sql.is_approved(reply_s.sender_id):
@@ -152,11 +162,11 @@ if PM_ON_OFF != "DISABLE":
             if pmpermit_sql.is_approved(event.chat_id):
                 pmpermit_sql.disapprove(event.chat_id)
                 await event.edit(
-                    "`Transaksi Dengan` [{}](tg://user?id={}) `Telah Selesai.`\n**Terima Kasih!**".format(
+                    "`Transaksi Dengan` [{}](tg://user?id={}) `Telah Selesai.`".format(
                         firstname, event.chat_id
                     )
                 )
-                bruh = "[#TRANSAKSI_SELESAI](https://t.me/Archivicore)\n[{}](tg://user?id={}) `Telah Menyelesaikan Transaksi.`\n**Terima Kasih!**".format(
+                bruh = "[{}](tg://user?id={}) `Telah Menyelesaikan Transaksi.`\n**Terima Kasih!**".format(
                     firstname, event.chat_id
                 )
                 await borg.send_message(
@@ -169,7 +179,7 @@ if PM_ON_OFF != "DISABLE":
                 await event.delete()
             elif not pmpermit_sql.is_approved(event.chat_id):
                 led = await event.edit(
-                    "❌ `Transaksi gagal, Kesalahan Perintah!`"
+                    "`Transaksi gagal, Kesalahan Perintah!`"
                 )
                 await asyncio.sleep(3)
                 await led.delete()
@@ -183,11 +193,11 @@ if PM_ON_OFF != "DISABLE":
                 firstname = replied_user.user.first_name
                 pmpermit_sql.disapprove(reply_s.sender_id)
                 await event.edit(
-                    "`Transaksi Dengan` [{}](tg://user?id={}) `Telah Selesai.`\n**Terima Kasih!**".format(
+                    "`Transaksi Dengan` [{}](tg://user?id={}) `Telah Selesai.`".format(
                         firstname, reply_s.sender_id
                     )
                 )
-                bruh = "[#TRANSAKSI_SELESAI](https://t.me/Archivicore)\n[{}](tg://user?id={}) `Telah Menyelesaikan Transaksi.`\n**Terima Kasih!**".format(
+                bruh = "[{}](tg://user?id={}) `Telah Menyelesaikan Transaksi.`\n**Terima Kasih!**".format(
                     firstname, event.chat_id
                 )
                 await borg.send_message(
@@ -280,8 +290,8 @@ if PM_ON_OFF != "DISABLE":
                 await PREV_REPLY_MESSAGE[chat_ids].delete()
             PREV_REPLY_MESSAGE[chat_ids] = r
             the_message = ""
-            the_message += ""
-            the_message += f"[#BLOCKED_OTOMATIS](tg://user?id={chat_ids}): {chat_ids}\n"
+            the_message += "#BLOCKED_PMs\n\n"
+            the_message += f"[User](tg://user?id={chat_ids}): {chat_ids}\n"
             the_message += f"Message Counts: {PM_WARNS[chat_ids]}\n"
             try:
                 await borg.send_message(
