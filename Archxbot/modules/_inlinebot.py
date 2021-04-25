@@ -258,7 +258,7 @@ if lang == "id":
         await event.edit(
             f"**Layanan Bantuan Pelanggan**",
             buttons=[
-                [Button.inline("Bantuan Transaksi Aman", data="transx")],
+                [Button.inline("Bantuan Transaksi", data="transx")],
                 [Button.inline("Mau Pasang Bot Seperti ini ?", data="ubot")],
             ],
         )
@@ -307,7 +307,7 @@ if lang == "id":
         await event.get_chat()
         him_id = event.query.user_id
         await event.edit(
-            f"**Kamu bisa Membeli Produk Degan Aman Di:**\n{DEFAULTUSER}\n\n`Silahkan Kamu Pilih Produk yang Tersedia` [Di sini](https://t.me/ArchivicoreHelpBot?start=Produk)\n\n",
+            f"**Kamu bisa Membeli Produk Degan Saya.**\n`Silahkan Kamu Pilih Produk yang Tersedia` [Di sini](https://t.me/ArchivicoreAssistantBot?start=help)\n\n",
             buttons=[
                 [Button.inline("Kembali", data="bantu")],
             ],
@@ -354,7 +354,7 @@ if lang == "id":
         await event.get_chat()
         him_id = event.query.user_id
         await event.edit(
-            f"**Solusi nih, DIbaca ya !**\nMELAYANI JASA:\nDEPLOY USERBOT & U-DYNOS\nPEMASANGAN BOT MANAGER GRUP\nnQ&A: [Baca Disini yuk](https://t.me/ArchivicoreAssistantBot?start=help)\nDengan Tekan Tombol Pasang Sekarang Dibawah:",
+            f"**Solusi nih, DIbaca ya !\nMELAYANI JASA:\nDEPLOY USERBOT & U-DYNOS\nPEMASANGAN BOT MANAGER GRUP\n\nQ&A: [Baca Disini yuk](https://t.me/ArchivicoreAssistantBot?start=help)\nDengan Tekan Tombol Pasang Sekarang Dibawah:**",
             buttons=[
                 [Button.inline("Pasang Sekarang", data="cs")],
                 [Button.inline("Batalkan", data="bantu")],
@@ -370,13 +370,12 @@ if lang == "id":
         await event.get_chat()
         him_id = event.query.user_id
         await event.edit(
-            f"`Kamu Mau Pasang UserBot & Bot Grup Manager ?`",
-            "\nJika berminat dengan jasa ini, Bisa langsung Hubungi Kontak yang tersedia dan jika ada yang ingin ditanyakan atau tidak mengerti, Kamu juga bisa bertanya pada kontak DIbawah ini ya.",
-            "\n`Saya siap melayani Anda!`",
-            "\n\n**NOTE:\nIni Hanya untuk KAMU yang\nBERMINAT & MEMBUTUHKAN Ya!**",
-            "\nCustomer Service : [Archivicore](https://t.me/ArchivicoreAssistantBot?start=help)",
-            "\nOrder & Payment : [Archivicore](https://t.me/Archivicore)",
-            buttons=[Button.inline("Kembali", data="bantu")],
+            f"`Kamu Mau Pasang UserBot & Bot Grup Manager ?`\nJika berminat dengan jasa ini, Bisa langsung Hubungi Kontak yang tersedia dan jika ada yang ingin ditanyakan atau tidak mengerti, Kamu juga bisa bertanya pada kontak DIbawah ini ya.\n`Saya siap melayani Anda!`",
+            f"\n\n**NOTE:\nIni Hanya untuk KAMU yang\nBERMINAT & MEMBUTUHKAN Ya!**\nCustomer Service : [Archivicore](https://t.me/ArchivicoreAssistantBot?start=help)",
+            buttons=[
+                [Button.inline("Order & Payment", data="chat"),
+                Button.inline("Kembali", data="bantu")],
+            ],
         )
 
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"close")))
