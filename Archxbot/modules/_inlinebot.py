@@ -258,11 +258,9 @@ if lang == "id":
         await event.edit(
             f"**Layanan Bantuan Pelanggan**\n`Protected by` [Archivicore]",
             buttons=[
-                [Button.inline("Transaksi", data="transx"),
-                Button.inline("Pembelian Produk", data="buying"),
-                Button.inline("Mau Pasang uBot", data="ubot")],
+                [Button.inline("Bantuan Transaksi Aman", data="transx")],
+                [Button.inline("Mau Pasang Bot Seperti ini ?", data="ubot")],
             ],
-            link_preview=False,
         )
 
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"transx")))
@@ -274,13 +272,32 @@ if lang == "id":
         await event.get_chat()
         him_id = event.query.user_id
         await event.edit(
-            f"**Cara Transaksi Dengan {DEFAULTUSER}:\nKamu Tekan Tombol Mulai Chat\nTanyakan Stok Barang\nTransfer Sesuai Rekening & Nominal Harga\nKirim Bukti Transfer\nTunggu Konfirmasi dari Saya\nDan Pesananmu Akan Dikirim.**\n\n`Protected by` [Archivicore]",
+            f"**Cara Transaksi Dengan {DEFAULTUSER}:\n1. Kamu Tekan Tombol Mulai Chat\n2. Tanyakan Stok & Request Barang\n3. Transfer Sesuai Rekening & Nominal Harga\n4. Kirim Bukti Transfer\n5. Tunggu Konfirmasi Pesanan\n5. Dan Pesananmu Akan Dikirim.**\n\n`Protected by` [Archivicore]",
             buttons=[
-                [Button.inline("Cek & Membeli Produk", data="buying"),
-                Button.inline("Kembali", data="bantu")],
+                [Button.inline("Mulai Chat", data="chat"),
+                Button.inline("ArBer", data="arber")
+                Button.inline("Pembelian Produk", data="buying")],
+                [Button.inline("Kembali", data="bantu")],
             ],
-            link_preview=False,
         )
+
+    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"arber")))
+    async def rip(event):
+        if event.query.user_id == bot.uid:
+            sedok = "Anda tidak perlu menggunakan ini."
+            await event.answer(sedok, cache_time=0, alert=True)
+            return
+        await event.get_chat()
+        him_id = event.query.user_id
+        await event.edit(
+            f"**ArBer (Archivicore Bersama) adalah fitur perantara antara Penjual dan Pembeli.\n\nFitur ini diharapkan untuk meminimalisir transaksi penipuan di dunia maya.\n\nSilahkan pilih role kamu dalam transaksi ini:**",
+            buttons=[
+                [Button.inline("Pembeli", data="buyer"),
+                Button.inline("Penjual", data="seller")],
+                [Button.inline("Batalkan", data="batal")],
+            ],
+        )
+
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"buying")))
     async def rip(event):
         if event.query.user_id == bot.uid:
@@ -290,12 +307,46 @@ if lang == "id":
         await event.get_chat()
         him_id = event.query.user_id
         await event.edit(
-            f"**Membeli Produk Degan: {DEFAULTUSER}\nSilahkan Kamu Pilih Produk yang Tersedia**\n**Cek Produk** [Klik Disini](https://t.me/ArchivicoreHelpBot?start=Produk)\n\n`Protected by` [Archivicore]",
+            f"**Membeli Produk Degan Aman Di:\n{DEFAULTUSER}\n\nSilahkan Kamu Pilih Produk yang Tersedia [Di sini](https://t.me/ArchivicoreHelpBot?start=Produk)\n\n`Protected by` [Archivicore]",
             buttons=[
-                [Button.inline("Transaksi", data="transx"),
-                Button.inline("Kembali", data="bantu")],
+                [Button.inline("Kembali", data="bantu")],
             ],
         )
+
+
+    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"buyer")))
+    async def rip(event):
+        if event.query.user_id == bot.uid:
+            sedok = "Anda tidak perlu menggunakan ini."
+            await event.answer(sedok, cache_time=0, alert=True)
+            return
+        await event.get_chat()
+        him_id = event.query.user_id
+        await event.edit("Role Kamu Sebagai Pembeli Diterima! ✔️")
+        text2 = "`Mohon Tunggu Sampai Saya Menyetujui.\nJangan Spam Atau Coba kirim Apa Pun!.\nTerima kasih.`"
+        await borg.send_message(event.query.user_id, text2)
+        await borg.send_message(
+            LOG_CHAT,
+            message=f"[#Pelanggan](tg://user?id={him_id}) Memilih role sebagai Pembeli.",
+        )
+
+
+    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"seller")))
+    async def rip(event):
+        if event.query.user_id == bot.uid:
+            sedok = "Anda tidak perlu menggunakan ini."
+            await event.answer(sedok, cache_time=0, alert=True)
+            return
+        await event.get_chat()
+        him_id = event.query.user_id
+        await event.edit("Role Kamu Sebagai Penjual Diterima! ✔️")
+        text2 = "`Mohon Tunggu Sampai Saya Menyetujui.\nJangan Spam Atau Coba kirim Apa Pun!.\nTerima kasih.`"
+        await borg.send_message(event.query.user_id, text2)
+        await borg.send_message(
+            LOG_CHAT,
+            message=f"[#Pelanggan](tg://user?id={him_id}) Memilih role sebagai Penjual.",
+        )
+
 
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"close")))
     async def on_plug_in_callback_query_handler(event):
