@@ -256,7 +256,7 @@ if lang == "id":
         await event.get_chat()
         him_id = event.query.user_id
         await event.edit(
-            f"**Layanan Bantuan Pelanggan**\n`Protected by` [Archivicore]",
+            f"**Layanan Bantuan Pelanggan**",
             buttons=[
                 [Button.inline("Bantuan Transaksi Aman", data="transx")],
                 [Button.inline("Mau Pasang Bot Seperti ini ?", data="ubot")],
@@ -272,7 +272,7 @@ if lang == "id":
         await event.get_chat()
         him_id = event.query.user_id
         await event.edit(
-            f"**Cara Transaksi Dengan {DEFAULTUSER}:\n1. Kamu Tekan Tombol Mulai Chat\n2. Tanyakan Stok & Request Barang\n3. Transfer Sesuai Rekening & Nominal Harga\n4. Kirim Bukti Transfer\n5. Tunggu Konfirmasi Pesanan\n5. Dan Pesananmu Akan Dikirim.**\n\n`Protected by` [Archivicore]",
+            f"**Cara Transaksi Dengan {DEFAULTUSER}:\n1. Kamu Tekan Tombol Mulai Chat\n2. Tanyakan Stok & Request Barang\n3. Transfer Sesuai Rekening & Nominal Harga\n4. Kirim Bukti Transfer\n5. Tunggu Konfirmasi Pesanan\n5. Dan Pesananmu Akan Dikirim.**",
             buttons=[
                 [Button.inline("Mulai Chat", data="chat"),
                 Button.inline("ArBer", data="arber"),
@@ -307,7 +307,7 @@ if lang == "id":
         await event.get_chat()
         him_id = event.query.user_id
         await event.edit(
-            f"**Membeli Produk Degan Aman Di:\n{DEFAULTUSER}\n\nSilahkan Kamu Pilih Produk yang Tersedia [Di sini](https://t.me/ArchivicoreHelpBot?start=Produk)\n\n`Protected by` [Archivicore]",
+            f"**Membeli Produk Degan Aman Di:\n{DEFAULTUSER}\n\nSilahkan Kamu Pilih Produk yang Tersedia [Di sini](https://t.me/ArchivicoreHelpBot?start=Produk)\n\n",
             buttons=[
                 [Button.inline("Kembali", data="bantu")],
             ],
@@ -354,12 +354,11 @@ if lang == "id":
         await event.get_chat()
         him_id = event.query.user_id
         await event.edit(
-            "`Kamu Mau Pasang UserBot ini ?`",
-            "\n**Solusi nih, DIbaca ya !**",
+            "**Solusi nih, DIbaca ya !**",
             "\n\nMELAYANI JASA:",
-            "\n- DEPLOY USERBOT & U-DYNOS",
-            "\n- PEMASANGAN BOT MANAGER GRUP",
-            "\n\nREPO YANG TERSERDIA: Lihat [Di sini](https://t.me/ArchivicoreAssistantBot?start=help)",
+            "\nDEPLOY USERBOT & U-DYNOS",
+            "\nPEMASANGAN BOT MANAGER GRUP",
+            "\nREPO YANG TERSERDIA: Lihat [Di sini](https://t.me/ArchivicoreAssistantBot?start=help)",
             "\nQ&A: [Baca Disini yuk](https://t.me/ArchivicoreAssistantBot?start=help)",
             "\nDengan Tekan Tombol Pasang Sekarang Dibawah: ",
             buttons=[
@@ -378,15 +377,10 @@ if lang == "id":
         him_id = event.query.user_id
         await event.edit(
             "`Kamu Mau Pasang UserBot & Bot Grup Manager ?`",
-            "\nJika berminat dengan jasa ini,",
-            "Bisa langsung Hubungi Kontak yang tersedia",
-            "dan jika ada yang ingin ditanyakan",
-            "atau tidak mengerti,",
-            "Kamu juga bisa bertanya pada kontak",
-            "DIbawah ini ya.",
+            "\nJika berminat dengan jasa ini, Bisa langsung Hubungi Kontak yang tersedia dan jika ada yang ingin ditanyakan atau tidak mengerti, Kamu juga bisa bertanya pada kontak DIbawah ini ya.",
             "\n`Saya siap melayani Anda!`",
             "\n\n**NOTE:\nIni Hanya untuk KAMU yang\nBERMINAT & MEMBUTUHKAN Ya!**",
-            "\nCustomer Service : [Archivicore](https://t.me/Archivicore)",
+            "\nCustomer Service : [Archivicore](https://t.me/ArchivicoreAssistantBot?start=help)",
             "\nOrder & Payment : [Archivicore](https://t.me/Archivicore)",
             buttons=[Button.inline("Kembali", data="bantu")],
         )
