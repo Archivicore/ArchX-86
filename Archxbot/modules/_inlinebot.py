@@ -275,7 +275,7 @@ if lang == "id":
             f"**Cara Transaksi Dengan {DEFAULTUSER}:\n1. Kamu Tekan Tombol Mulai Chat\n2. Tanyakan Stok & Request Barang\n3. Transfer Sesuai Rekening & Nominal Harga\n4. Kirim Bukti Transfer\n5. Tunggu Konfirmasi Pesanan\n5. Dan Pesananmu Akan Dikirim.**\n\n`Protected by` [Archivicore]",
             buttons=[
                 [Button.inline("Mulai Chat", data="chat"),
-                Button.inline("ArBer", data="arber")
+                Button.inline("ArBer", data="arber"),
                 Button.inline("Pembelian Produk", data="buying")],
                 [Button.inline("Kembali", data="bantu")],
             ],
