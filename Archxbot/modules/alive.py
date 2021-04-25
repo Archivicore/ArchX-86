@@ -49,7 +49,7 @@ pm_caption += "┣[ `Python: 3.9.5`\n"
 pm_caption += "┣[ `Telethon Version: 1.21.1`\n"
 pm_caption += "┣━━━━━━━━━━━━━━━━━━━━━━━━ \n"
 pm_caption += f"┣[ **Version** : `{currentversion}`\n"
-pm_caption += "┣[ **Database** : `AWS - Working Properly`\n\n"
+pm_caption += "┣[ **Database** : `AWS - Working Properly`\n"
 pm_caption += "┗━━━━━━━━━━━━━━━━━━━━━━━━\n"
 
 
