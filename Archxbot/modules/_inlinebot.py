@@ -66,18 +66,6 @@ if lang == "id":
                 ],
             )
             await event.answer([result])
-        elif event.query.user_id == bot.uid and query.startswith("**Ini"):
-            result = builder.photo(
-                file=WARN_PIC,
-                text=query,
-                buttons=[
-                    [custom.Button.inline("Mulai Chat", data="chat"),
-                    custom.Button.inline("Tentang-ku", data="ttgku"),
-                    custom.Button.inline("Bantuan", data="bantu")],
-                    [custom.Button.url("Join Channel", "https://t.me/ArchivicoreOfficial")],
-                ],
-            )
-            await event.answer([result])
 
     @tgbot.on(
         events.callbackquery.CallbackQuery(  # pylint:disable=E0602
@@ -276,7 +264,7 @@ if lang == "id":
             link_preview=False,
         )
 
-    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"lapen")))
+    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"lapen2")))
     async def rip(event):
         if event.query.user_id == bot.uid:
             sedok = "Anda tidak perlu menggunakan ini."
@@ -292,7 +280,27 @@ if lang == "id":
             ],
             link_preview=False,
         )
-        
+
+    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"lapen")))
+    async def rip(event):
+        if event.query.user_id == bot.uid:
+            sedok = "Anda tidak perlu menggunakan ini."
+            await event.answer(sedok, cache_time=0, alert=True)
+            return
+        await event.get_chat()
+        him_id = event.query.user_id
+        await event.edit(f"**Ini adalah Keamanan Pesan {DEFAULTUSER} untuk Menjauhkan Spam dan Memblokir Otomatis**\n\n`Protected by` [Archivicore]")
+        text2 = "Layanan Bantuan Archivicore"
+        await borg.send_message(
+            event.query.user_id,
+            text2,
+            buttons=[
+                [Button.inline("Layanan Pelanggan", data="lapen2"),
+                Button.url("Transaksi Bot", "https://t.me/ArchivicoreAssistantBot?start=help")],
+                [Button.inline("Kembali", data="bantu")],
+            ],
+        )
+
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"close")))
     async def on_plug_in_callback_query_handler(event):
         if event.query.user_id == bot.uid:
