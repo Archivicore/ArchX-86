@@ -241,10 +241,10 @@ if lang == "id":
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"ttgku")))
     async def rip(event):
         if event.query.user_id == bot.uid:
-            text = f"**Ini adalah Keamanan PM {DEFAULTUSER}\n`Protected by` [Archivicore](https//t.me/ArchivicoreOfficial)"
+            text = f"Ini adalah Keamanan Pesan\nProtected by @ArchivicoreAssistantBot"
             await event.answer(text, alert=True)
         else:
-            txt = f"**Ini adalah Keamanan PM {DEFAULTUSER}\n`Protected by` [Archivicore](https//t.me/ArchivicoreOfficial)"
+            txt = f"Ini adalah Keamanan PM {DEFAULTUSER}\nProtected by @ArchivicoreAssistantBot"
             await event.answer(txt, alert=True)
 
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"bantu")))
@@ -256,12 +256,13 @@ if lang == "id":
         await event.get_chat()
         him_id = event.query.user_id
         await event.edit(
-            f"**Ini adalah Keamanan PM {DEFAULTUSER} untuk Menjauhkan pelaku spam dan dapat Memblokir Otomatis pelaku spam.**"
+            f"**Ini adalah Keamanan Pesan {DEFAULTUSER} untuk Menjauhkan Spam dan Memblokir Otomatis**"
             "\n\n`Protected by` [Archivicore](https//t.me/ArchivicoreOfficial)",
             buttons=[
                 [Button.url("Layanan Pelanggan", "https//t.me/ArchivicoreOfficial"),
-                [Button.inline("SPAM", data="jgnspam")],
+                Button.inline("SPAM", data="jgnspam")],
             ],
+            link_preview=False,
         )
         
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"close")))
