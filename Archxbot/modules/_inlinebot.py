@@ -258,8 +258,8 @@ if lang == "id":
         await event.edit(
             f"**Ini adalah Keamanan Pesan {DEFAULTUSER} untuk Menjauhkan Spam dan Memblokir Otomatis**\n\n`Protected by` [Archivicore]",
             buttons=[
-                [Button.url("Layanan Pelanggan", "https//t.me/ArchivicoreOfficial"),
-                Button.inline("SPAM", data="jgnspam")],
+                [Button.inline("SPAM", data="jgnspam"),
+                Button.url("Layanan Pelanggan", "https//t.me/ArchivicoreOfficial")],
             ],
             link_preview=False,
         )
