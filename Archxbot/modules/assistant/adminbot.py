@@ -22,21 +22,21 @@ from telethon.tl.types import (
 )
 
 # =================== CONSTANT ===================
-PP_TOO_SMOL = "`The image is too small`"
-PP_ERROR = "`Failure while processing the image`"
-NO_ADMIN = "`I am not an admin nub nibba!`"
+PP_TOO_SMOL = "`Gambar terlalu kecil`"
+PP_ERROR = "`Gagal saat memproses gambar`"
+NO_ADMIN = "`Aku bukan seorang admin!`"
 NO_PERM = (
-    "`I don't have sufficient permissions! This is so sed. Alexa play Tera Baap Aaya`"
+    "`Aku tidak mempunyai ijin untuk itu! Ini sangat menyedihkan u.u`"
 )
-NO_SQL = "`Running on Non-SQL mode!`"
+NO_SQL = "`Berjalan pada mode Non-SQL!`"
 
-CHAT_PP_CHANGED = "`Chat Picture Changed`"
+CHAT_PP_CHANGED = "`Gambar berhasil diganti`"
 CHAT_PP_ERROR = (
-    "`Some issue with updating the pic,`"
-    "`maybe coz I'm not an admin,`"
-    "`or don't have enough rights.`"
+    "`Ada masalah saat pembaruan gambar,`"
+    "`mungkin aku bukan admin disini,`"
+    "`atau tidak mempunyai hak lebih.`"
 )
-INVALID_MEDIA = "`Invalid Extension`"
+INVALID_MEDIA = "`Ekstensi tidak benar`"
 
 BANNED_RIGHTS = ChatBannedRights(
     until_date=None,
@@ -79,7 +79,7 @@ async def ban(event):
     momos = user
     momoz = momos.first_name
     if kekme.is_admin:
-        await event.reply("Oh, Yeah? Lets Start Banning Admins.")
+        await event.reply("Oh, Yeah?Starting ban admin.")
         return
     if user:
         pass
