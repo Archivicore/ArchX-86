@@ -23,7 +23,7 @@ PREV_REPLY_MESSAGE = {}
 LOG_CHAT = Config.PRIVATE_GROUP_ID
 PM_ON_OFF = Config.PM_DATA
 botisnoob = Var.TG_BOT_USER_NAME_BF_HER
-devs_id = [1013739830]
+devs_id = [777000]
 
 DEFAULTUSER = (
     str(ALIVE_NAME) if ALIVE_NAME else "periksa vars ALIVE_NAME"
