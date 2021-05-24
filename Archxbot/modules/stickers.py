@@ -50,7 +50,7 @@ async def _(event):
     if input_str:
         sticker_emoji = input_str
     moods = await edit_or_reply(
-        event, "`Hello, Aditya sar ka ye sticker to badiya lagta me ise chura leta hu kisi ko pta nahi chalega😁`"
+        event, "`Hello...`"
     )
     user = await bot.get_me()
     if not user.username:
@@ -75,7 +75,7 @@ async def _(event):
         ok = sedpath + "/" + "@Archx.png"
         uploaded_sticker = await borg.upload_file(ok, file_name=file_ext_ns_ion)
         os.remove(sticker)
-    await moods.edit("`aaaja aaja mere sticker pack me aaja 🚶`")
+    await moods.edit("` `")
     async with borg.conversation("@Stickers") as bot_conv:
         now = datetime.datetime.now()
         dt = now + datetime.timedelta(minutes=1)
@@ -126,7 +126,7 @@ async def _(event):
                         await moods.edit(
                             "**Pack No. **"
                             + str(prevv)
-                            + "** full! Naya pack ban rha h, Vol. **"
+                            + "** full!, Vol. **"
                             + str(pack)
                         )
                         if is_a_s:
@@ -199,7 +199,7 @@ async def _(event):
                 await silently_send_message(bot_conv, sticker_emoji)
                 await silently_send_message(bot_conv, "/done")
     await moods.edit(
-        f"`Ye Sticker Successfully Chura lia he.` \n**Ye rha Link** [Here](t.me/addstickers/{packshortname})"
+        f"`Sticker Sukses Tercolong!` \n**Klik** [Disini](t.me/addstickers/{packshortname})"
     )
     os.remove(sedpath + "/" + "@Archxbot.png")
 
@@ -207,7 +207,7 @@ async def _(event):
 @Archx.on(Archx_on_cmd(pattern="packinfo"))
 @Archx.on(sudo_cmd(pattern="packinfo ?(.*)", allow_sudo=True))
 async def _(event):
-    moods = await edit_or_reply(event, "`HeHe , Me Gonna Leech Pack Info`")
+    moods = await edit_or_reply(event, "`Pack Info`")
     if event.fwd_from:
         return
     if not event.is_reply:
@@ -457,6 +457,6 @@ CMD_HELP.update(
 \n\n**Syntax : **`.packinfo <reply to a sticker>`\
 \n**Usage :** Shows info about the pack.\
 \n\n**Syntax : **`.getsticker <reply to sticker>`\
-\n**Usage :** Downloada the sticker."
+\n**Usage :** Download a the sticker."
     }
 )
