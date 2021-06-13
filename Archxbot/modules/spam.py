@@ -26,13 +26,7 @@ async def spammer(e):
         spam_message = str(e.text[8:])
         await asyncio.wait([e.respond(spam_message) for i in range(counter)])
         await e.delete()
-        if LOGGER:
-            await e.client.send_message(
-                LOGGER_GROUP,
-                "#SPAM \n\n"
-                "Spam was executed successfully"
-                )
-                               
+
 @register(outgoing=True, pattern="^.bigspam")
 async def bigspam(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
@@ -42,14 +36,7 @@ async def bigspam(e):
         for i in range(1, counter):
             await e.respond(spam_message)
         await e.delete()
-        if LOGGER:
-            await e.client.send_message(
-                LOGGER_GROUP,
-                "#BIGSPAM \n\n"
-                "Bigspam was executed successfully"
-                )
-        
-        
+
 @register(outgoing=True, pattern="^.picspam")
 async def tiny_pic_spam(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
@@ -60,12 +47,7 @@ async def tiny_pic_spam(e):
         for i in range(1, counter):
             await e.client.send_file(e.chat_id, link)
         await e.delete()
-        if LOGGER:
-            await e.client.send_message(
-                LOGGER_GROUP,
-                "#PICSPAM \n\n"
-                "PicSpam was executed successfully"
-                )
+
 @register(outgoing=True, pattern="^.delayspam (.*)")
 async def spammer(e):
     spamDelay = float(e.pattern_match.group(1).split(' ', 2)[0])
@@ -75,7 +57,3 @@ async def spammer(e):
     for i in range(1, counter):
         await e.respond(spam_message)
         await sleep(spamDelay)
-    if LOGGER:
-        await e.client.send_message(
-            LOGGER_GROUP, "#DelaySPAM\n"
-            "DelaySpam was executed successfully")
